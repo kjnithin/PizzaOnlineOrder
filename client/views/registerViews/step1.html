@@ -1,0 +1,15 @@
+ <div class="form-group" id="regNameGroup" ng-class="{ 'has-error' : registerForm.Name.$invalid && !registerForm.Name.$pristine }">
+   <label for="fullName" class="control-label required">Full Name</label>
+   <span class="fa fa-user-secret" id="regname"></span>
+     <input type="text" name="Name" class="form-control" ng-model="registerForm.name"  ng-minlength="3" required/>
+ </div>
+ <div class="form-group" id="regusernamegroup" ng-class="{ 'has-error' : registerForm.username.$invalid && !registerForm.username.$pristine }">
+   <label for="userName" class="control-label required">User Name</label>
+   <span class="fa fa-user" id="regusername"></span>
+   <input type="text" name="username" class="form-control" ng-model="registerForm.userName" ng-minlength="3" required/>
+ </div>
+ <div class="form-group">
+   <a ui-sref="register.step2" id="next_1" class="btn btn-primary col-md-12">
+    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+ </div>
