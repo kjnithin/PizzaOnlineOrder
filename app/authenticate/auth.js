@@ -31,6 +31,16 @@ passport.use(new LocalStrategy({
    });
  });
 
-
-
-module.exports= passport;
+var authUser = function(req,res){
+  User.findOne(req.params.email , function(err,data){
+    if(err){
+      res.json(err);
+    }else{
+      res.json(data);
+    }
+  })
+}
+module.exports= {
+  passport : passport,
+  authUser : authUser
+};

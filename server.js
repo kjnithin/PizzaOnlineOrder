@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var validator = require('express-validator');
 var fs = require('fs');
 var mongoose = require('mongoose');
@@ -40,14 +41,18 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(validator());
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/js', express.static(__dirname + '/client/js'));
-app.use('/css', express.static(__dirname + '/client/css'));
+app.use('/js', express.static(__dirname + '/client/src/js'));
+app.use('/css', express.static(__dirname + '/client/src/css'));
 app.use('/views', express.static(__dirname + '/client/views'));
+app.use('/lib', express.static(__dirname + '/client/lib'));
+app.use('/dist', express.static(__dirname + '/client/dist'));
+
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname+"/client/index.html");
@@ -78,6 +83,7 @@ app.get('/users/:user_id', userController.getidUser);
 app.put('/users/:user_id', userController.putUser);
 app.delete('/users/:user_id', userController.deleteUser);
 
+app.post('/auth', auth.authUser);
 
 app.get('/provinces', provinceController.getProvince);
 app.post('/provinces', provinceController.postProvince);
