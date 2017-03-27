@@ -8,14 +8,14 @@
     <div class='form-inline'>
         <div class="form-group">
             <div class="col-xs-6" id="regmap" ng-class="{ 'has-error' : registerForm.Postal.$invalid && !registerForm.Postal.$pristine }">
-                <label for="postal" class="required">Postal Code</label>
+                <label  class="required">Postal Code</label>
                 <span class="fa fa-map" id="regmaplabel"></span>
                 <input class="form-control" id="regPostal" name="Postal" ng-model="registerForm.postal" type="text" required>
             </div>
-            <div class="col-xs-6" id="regphonegroup" ng-class="{ 'has-error' : registerForm.Phone.$invalid && !registerForm.Phone.$pristine}">
-                <label for="telephone" class="required">Telephone</label>
+            <div class="col-xs-6" id="regphonegroup" ng-class="{ 'has-error' : registerForm.Phone.$error.pattern}">
+                <label  class="required">Telephone</label>
                 <span class="fa fa-whatsapp" id="regphone"></span>
-                <input class="form-control" name="Phone" id="regTel" ng-model="registerForm.phone" type="text" ng-minlength="10" ng-maxlength="10"  required>
+                <input class="form-control" name="Phone" id="regTel" ng-model="registerForm.phone" type="text" ng-pattern='phone'  placeholder="111-111-1111"  required>
             </div>
         </div>
     </div>

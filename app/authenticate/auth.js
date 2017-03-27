@@ -38,8 +38,8 @@ var authUser = function(req,res){
     }else{
       res.json(data);
     }
-  })
-}
+  });
+};
 module.exports= {
   passport : passport,
   authUser : authUser

@@ -2,7 +2,9 @@
 var app = angular.module('pizzaOrder', [
     'ui.router',
     'toastr',
-    'ngMaterial'
+    'ngMaterial',
+    'ngStorage',
+    'ui.bootstrap.modal'
 ]);
 
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {

@@ -1,38 +1,43 @@
 <!DOCTYPE html>
     <html ng-app="pizzaOrder">
         <head>
-
+            <!--build:js js/app.min.js-->
             <script src="./lib/jquery/jquery.min.js"></script>
             <script src="./lib/angular/angular.min.js"></script>
+            <script src="./lib/angular-ui/ui-bootstrap.min.js"></script>
             <script src="./lib/angular-animate/angular-animate.min.js"></script>
             <script src="./lib/angular-aria/angular-aria.min.js"></script>
             <script src="./lib/angular-material/angular-material.min.js"></script>
             <script src="./lib/angular-toastr/angular-toastr.tpls.min.js"></script>
             <script src="./lib/angular-ui-router/angular-ui-router.min.js"></script>
+            <script src="./lib/ngStorage/ngStorage.min.js"></script>
             <script src="./lib/bootstrap/bootstrap.min.js"></script>
 
-           <!--  <script src="js/app.js"></script>
-            <script src="js/services/service.js"></script>
-            <script src="js/controllers/loginController.js"></script>
-            <script src="js/controllers/registerController.js"></script>
-            <script src="js/controllers/userController.js"></script>
-            <script src="js/controllers/adminController.js"></script>
-            <script src="js/controllers/logoutController.js"></script>
-            <script src="js/controllers/displayController.js"></script> -->
 
-            <script src="./dist/js/app.min.js"></script>
 
+
+            <script src="./src/js/app.js"></script>
+            <script src="./src/js/services/service.js"></script>
+            <script src ="./src/js/filter/filter.js"></script>
+            <script src="./src/js/controllers/loginController.js"></script>
+            <script src="./src/js/controllers/registerController.js"></script>
+            <script src="./src/js/controllers/userController.js"></script>
+            <script src="./src/js/controllers/adminController.js"></script>
+            <script src="./src/js/controllers/logoutController.js"></script>
+            <script src="./src/js/controllers/displayController.js"></script>
+            <!--endbuild-->
+
+            <!--build:css css/styles.min.css-->
             <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css"/>
             <link rel="stylesheet" href="./lib/angular-material/angular-material.min.css"/>
             <link rel="stylesheet" href="./lib/angular-toastr/angular-toastr.min.css"/>
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
             <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css"/>
-            <!-- <link rel="stylesheet" type="text/css" href="./css/styles.css"> -->
-            <link rel="stylesheet" href="./dist/css/styles.min.css"/>
+            <link rel="stylesheet" type="text/css" href="./src/css/styles.css">
+            <!--endbuild-->
 
-              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-              <title>Conestoga Pizzeria</title>
+            <title>Conestoga Pizzeria</title>
 
         </head>
         <body>
@@ -43,7 +48,7 @@
                   <text class='navbar-header-text'>CONESTOGA PIZZA</text>
                 </div>
                 <div ng-controller="displayController">
-                <p class="navbar-text" id="displayName" ng-if="name">Hi!! <span class='bold'>{{name}}</soan></p>
+                <p class="navbar-text" id="displayName" ng-if="name"> <span class='bold'></span></p>
                 </div>
                 <div class="collapse navbar-collapse" ng-controller="logoutController">
                 <ul class="nav navbar-nav navbar-right">
@@ -63,7 +68,7 @@
          <nav class="navbar navbar-default navbar-fixed-bottom">
            <div class="container">
              <div class="navbar-header" id="copyright">
-               <p><span class="glyphicon glyphicon-copyright-mark"></span>Conestoga Pizza</P>
+               <p><i class="fa fa-copyright" aria-hidden="true"></i> CP</P>
                </div>
              </div>
            </nav>

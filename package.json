@@ -15,19 +15,18 @@
     "express": "^4.15.2",
     "express-validator": "^3.1.2",
     "mongoose": "^4.8.6",
-    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-cssmin": "^2.0.0",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-uglify": "^2.2.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-ng-annotate": "^3.0.0",
-    "grunt-nodemon": "^0.4.2",
-    "jshint-stylish": "^2.2.1"
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.2",
+    "gulp-jshint": "^2.0.4",
+    "gulp-uglify": "^2.1.1",
+    "gulp-useref": "^3.1.2",
+    "jshint-stylish": "^2.2.1",
+    "run-sequence": "^1.2.2"
   }
 }

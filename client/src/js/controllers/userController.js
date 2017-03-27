@@ -1,3 +1,3 @@
-app.controller("userController", function($scope){
-
-});
+app.controller("userController", ['$scope','$localStorage',function($scope,$localStorage){
+  $scope.userDetails = $localStorage.userdata;
+}]);

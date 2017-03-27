@@ -1,0 +1,27 @@
+<div class="form-group" ng-class="{ 'has-error' : registerForm.Provnice.$invalid && !registerForm.Provnice.$pristine }">
+    <label for="inputProvince" class="control-label required">Province</label>
+    <select class="form-control" id="regProvince" name="Provnice" ng-model="registerForm.province" required>
+    <option ng-repeat='n in provinceName'>{{n.name}}</option>
+  </select>
+</div>
+<div class="form-group">
+    <div class='form-inline'>
+        <div class="form-group">
+            <div class="col-xs-6" id="regmap" ng-class="{ 'has-error' : registerForm.Postal.$invalid && !registerForm.Postal.$pristine }">
+                <label  class="required">Postal Code</label>
+                <span class="fa fa-map" id="regmaplabel"></span>
+                <input class="form-control" id="regPostal" name="Postal" ng-model="registerForm.postal" type="text" required>
+            </div>
+            <div class="col-xs-6" id="regphonegroup" ng-class="{ 'has-error' : registerForm.Phone.$invalid && !registerForm.Phone.$pristine}">
+                <label  class="required">Telephone</label>
+                <span class="fa fa-whatsapp" id="regphone"></span>
+                <input class="form-control" name="Phone" id="regTel" ng-model="registerForm.phone" type="text" ng-minlength="10" ng-maxlength="10"  required>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <button type="submit" id="regButton" ng-disabled="registerForm.$invalid" class="btn btn-primary col-md-12"><i class="fa fa-user-plus fa-lg"></i>Register</button>
+</div>
+</div>

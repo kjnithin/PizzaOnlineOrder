@@ -1,0 +1,35 @@
+<div class="col-md-8 well form-horizontal">
+  <p class="tab-header">Personal Details</p>
+
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails ">Name:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{userDetails.name | firstCapital}}
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">User Name:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{userDetails.userName}}
+
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">Email:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{userDetails.email}}
+
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">Address:</label>
+      <div class="col-md-8" class="showPersonalDetails"><div>{{userDetails.apt}}</div>
+                                                        <div>{{userDetails.street | firstCapital}}</div>
+                                                        <div>{{userDetails.city | firstCapital}}, {{userDetails.province | firstCapital}}</div>
+                                                        <div>{{userDetails.postal | capitalize}}</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">Phone:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{userDetails.phone}}
+      </div>
+  </div>
+  </div>
+</div>

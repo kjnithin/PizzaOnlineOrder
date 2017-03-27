@@ -1,28 +1,28 @@
-<div>
-<md-card ng-repeat="n in user">
-  <div class='row'>
-         <div class="col-md-10">
-       <md-card-title>
+<div class="alert alert-danger" role="alert" ng-if="showAlert"><i class="fa fa-user fa-2x" aria-hidden="true"></i> <strong>There are no users in the system !!!</strong></div>
 
-         <md-card-title-text>
-           <span class="md-headline">{{n.name}}</span>
-           <span class="md-subhead">{{n.email}}</span>
+<div class='row'>
 
-          <span class="md-subhead"> <strong>Address</strong></span>
-           <span>{{n.apt}}, {{n.street}}</span>
-           <span>{{n.city}} {{n.province}}</span>
-           <span>{{n.postal}}</span>
-         </md-card-title-text>
+<md-card ng-repeat="user in userValue | orderBy : 'name'" class="col-md-5">
+    <md-card-title>
+        <div>
+            <p>
+                <span class="md-subhead bolder"><span ng-bind="user.name | firstCapital"></span></span>
+                <span class="md-subhead"><span ng-bind="user.email"></span></span>
+            </p>
+            <p class="md-subhead"> <strong>Address</strong></p>
+            <div>
+           <div><span ng-bind="user.apt"></span>, <span ng-bind="user.street | firstCapital"></span></div>
+           <div><span ng-bind="user.city | firstCapital"></span>, <span ng-bind="user.province | firstCapital"></span></div>
+           <div><span ng-bind="user.postal | capitalize"></span></div>
+            </div>
+        </div>
+        <div>
+            <md-button class="md-fab md-default md-hue-2" aria-label="Profile" ng-click="delete(user._id ,userValue, $index)">
+                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
+            </md-button>
+        </div>
        </md-card-title>
-       </div>
-       <div class="col-md-2 pull-right">
-       <md-card-actions layout="row" layout-align="end center">
-         <md-tooltip md-direction="{{demo.tipDirection}}">Delete</md-tooltip>
-         <md-button class="md-fab md-default md-hue-2" aria-label="Profile" ng-click="delete(n._id)">
-          <md-icon><i class="material-icons md-24">clear</i></md-icon>
-      </md-button>
-       </md-card-actions>
      </md-card>
-   </div>
-</div>
+
 </div>

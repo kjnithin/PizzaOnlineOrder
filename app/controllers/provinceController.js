@@ -85,4 +85,4 @@ module.exports = {
   getidProvince : getidProvince,
   getProvince : getProvince,
   postProvince : postProvince
-}
+};

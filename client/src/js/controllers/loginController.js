@@ -1,9 +1,10 @@
-app.controller('loginController', ['$scope','toastr','connectHttp','$state','$rootScope', function($scope, toastr, connectHttp,$state,$rootScope) {
+app.controller('loginController', ['$scope','toastr','connectHttp','$state','$rootScope','$localStorage', function($scope, toastr, connectHttp,$state,$rootScope,$localStorage) {
     $scope.loginForm = {};
 
     $scope.login = function() {
         connectHttp.loginHttp($scope.loginForm)
             .then(function(response) {
+                $localStorage.userdata = response.data.user;
                 if (response.data.user.role === "admin") {
                     $state.go('admin.order');
                 } else if (response.data.user.role === "user") {
@@ -36,7 +37,7 @@ app.controller('loginController', ['$scope','toastr','connectHttp','$state','$ro
               );
               request.execute(function(res){
                   $scope.email = res.emails[0].value;
-                  $scope.auth ={ email : $scope.email};
+                 $scope.auth ={ email : $scope.email};
                   connectHttp.googleAuth($scope.auth)
                   .then(function(response){
                   if(response.data.role === "admin"){

@@ -34,7 +34,7 @@ var postUser = function(req,res) {
           req.checkBody("city","Please enter the city").notEmpty();
           req.checkBody("province","Province is reequired").notEmpty();
           req.checkBody("postal","Postal code is required").notEmpty();
-          req.checkBody("phone","Phone number is required").isMobilePhone('en-US');
+          req.checkBody("phone","Phone number is required").notEmpty();
 
           var error = req.validationErrors();
           if (error) {
@@ -48,7 +48,7 @@ var postUser = function(req,res) {
                message:'User created',
              });
            }
-         })
+         });
        }
      };
 
@@ -125,4 +125,4 @@ module.exports = {
   getidUser : getidUser,
   getUser : getUser,
   postUser : postUser
-}
+};

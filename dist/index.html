@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <html ng-app="pizzaOrder">
+        <head>
+            <script src="js/app.min.js"></script>
+
+            <link rel="stylesheet" href="css/styles.min.css">
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+            <title>Conestoga Pizzeria</title>
+
+        </head>
+        <body>
+          <div class="container-fluid">
+            <nav class="navbar navbar-default navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <text class='navbar-header-text'>CONESTOGA PIZZA</text>
+                </div>
+                <div ng-controller="displayController">
+                <p class="navbar-text" id="displayName" ng-if="name"> <span class='bold'></span></p>
+                </div>
+                <div class="collapse navbar-collapse" ng-controller="logoutController">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a ng-click="logout()"><i class="fa fa-sign-in fa-fw fa-2x"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            </nav>
+          </div>
+          <!-- end -->
+
+        <div class='container' ui-view style="padding:100px 0px 50px " >
+
+        </div>
+         <!-- Its footer -->
+         <div class="container-fluid" id="footer">
+         <nav class="navbar navbar-default navbar-fixed-bottom">
+           <div class="container">
+             <div class="navbar-header" id="copyright">
+               <p><i class="fa fa-copyright" aria-hidden="true"></i> CP</P>
+               </div>
+             </div>
+           </nav>
+         </div>
+
+         <script type="text/javascript">
+         (function(){
+           var p = document.createElement('script');
+           p.type = 'text/javascript';
+           p.async = true;
+           p.src = 'https://apis.google.com/js/client.js?onload=onloadFunction';
+           var s = document.getElementsByTagName('script')[0];
+           s.parentNode.insertBefore(p,s);
+         })();
+
+         function onloadFunction(){
+           gapi.client.setApiKey('AIzaSyArxQNE0U970larR49XQuez78nbYtlysmk');
+           gapi.client.load('plus','v1',function(){});
+         }
+         </script>
+
+       </body>
+  </html>

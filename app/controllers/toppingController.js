@@ -13,6 +13,7 @@ var getTopping = function(req,res) {
 var postTopping = function(req,res) {
           var topping = new Topping();
           topping.name = req.body.name;
+          topping.value = req.body.value;
           topping.price=req.body.price;
 
 
@@ -48,6 +49,7 @@ Topping.findById(req.params.topping_id, function(err, topping) {
             res.send(err);
 
             topping.name = req.body.name;
+            topping.value = req.body.value;
             topping.price=req.body.price;
 
             topping.save(function(err) {
@@ -70,7 +72,7 @@ Topping.findById(req.params.topping_id, function(err, topping) {
 
 
 var deleteTopping = function(req,res) {
-  topping.remove({
+    Topping.remove({
          _id: req.params.topping_id
        }, function(err, topping) {
          if(err)
@@ -87,4 +89,4 @@ module.exports = {
   getTopping : getTopping,
   postTopping : postTopping,
   getidTopping : getidTopping
-}
+};

@@ -88,4 +88,4 @@ module.exports = {
   getidSize : getidSize,
   postSize : postSize,
   putSize :putSize
-}
+};

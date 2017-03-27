@@ -1,0 +1,26 @@
+<div class='row'>
+
+<md-card ng-repeat="n in user" class="col-md-5">
+    <md-card-title>
+        <div>
+            <p>
+                <span class="md-subhead bolder">{{n.name | firstCapital}}</span>
+                <span class="md-subhead">{{n.email}}</span>
+            </p>
+            <p class="md-subhead"> <strong>Address</strong></p>
+            <div>
+           <div>{{n.apt}}, {{n.street | firstCapital}}</div>
+           <div>{{n.city | firstCapital}} {{n.province | firstCapital}}</div>
+           <div>{{n.postal | capitalize}}</div>
+            </div>
+        </div>
+        <div>
+            <md-button class="md-fab md-default md-hue-2" aria-label="Profile" ng-click="delete(n._id)">
+                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                <md-tooltip md-direction="{{demo.tipDirection}}">Delete</md-tooltip>
+            </md-button>
+        </div>
+       </md-card-title>
+     </md-card>
+
+</div>

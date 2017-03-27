@@ -1,4 +1,157 @@
-
 <div role='tabpanel' id='inventory' class='tab-pane'>
-  <div> inventory details</div>
+    <h1 class="text-center">Inventory</h1>
+
+    <div class="row well">
+        <h3>Size</h3>
+        <div class="col-md-11">
+            <md-card ng-repeat="size in sizeData | orderBy:'name'" class="col-md-5">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"><strong><span
+                                ng-bind="size.name | firstCapital"></span></strong></span>
+                        <span class="md-subhead"><strong><span ng-bind="size.price |currency"></span></strong></span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"><img ng-src="{{size.image}}"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
+                    </div>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteSize(size._id ,sizeData, $index)"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
+                    </div>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+
+    </div>
+
+    <div class="row well">
+        <h3>Crust</h3>
+        <div class="col-md-11">
+            <md-card ng-repeat="crust in crustValue | orderBy:'name'" class="col-md-5">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"><strong><span
+                                ng-bind="crust.name | firstCapital"></span></strong></span>
+                        <span class="md-subhead"><strong><span ng-bind="crust.price |currency"></span></strong></span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
+                    </div>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteCrust(crust._id ,crustValue, $index)"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
+                    </div>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+
+    </div>
+
+    <div class="row well">
+        <h3>Cheese</h3>
+        <div class="col-md-11">
+            <md-card ng-repeat="cheese in cheeseValue | orderBy:'name' " class="col-md-5">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"><strong><span
+                                ng-bind="cheese.name | firstCapital"></span></strong></span>
+                        <span class="md-subhead"><strong><span ng-bind="cheese.price |currency"></span></strong></span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
+                    </div>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteCheese(cheese._id ,cheeseValue, $index)"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
+                    </div>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+
+    </div>
+
+    <div class="row well">
+        <h3>Toppings</h3>
+        <div class="col-md-11">
+            <h4 class="subhead">Veggies</h4>
+            <md-card ng-repeat="topping in toppingData | filter: 'veggie' | orderBy:'name'" class="col-md-5">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"><strong><span
+                                ng-bind="topping.name | firstCapital"></span></strong></span>
+                        <span class="md-subhead"><strong><span ng-bind="topping.price |currency"></span></strong></span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
+                    </div>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteTopping(topping._id ,topping)"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
+                    </div>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+
+        <div class="col-md-11">
+
+            <h4 class="subhead">Meat</h4>
+            <md-card ng-repeat="topping in toppingData | filter: 'meat' | orderBy: 'name'" class="col-md-5">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"><strong><span
+                                ng-bind="topping.name | firstCapital"></span></strong></span>
+                        <span class="md-subhead"><strong><span ng-bind="topping.price |currency"></span></strong></span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
+                    </div>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteTopping(topping._id ,topping)"></i>
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
+                    </div>
+                </md-card-actions>
+            </md-card>
+        </div>
+
+    </div>
+    <button class="btn" ng-click="open()">Open Modal</button>
+
+    <div modal="showModal" close="cancel()">
+        <div class="modal-header">
+            <h4>Modal Dialog</h4>
+        </div>
+        <div class="modal-body">
+            <p>Example paragraph with some text.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-click="ok()">Okay</button>
+            <button class="btn" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
 </div>
+
+

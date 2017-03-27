@@ -72,7 +72,7 @@ Cheese.findById(req.params.cheese_id, function(err, cheese) {
 
 
 var deleteCheese = function(req,res) {
-  cheese.remove({
+  Cheese.remove({
          _id: req.params.cheese_id
        }, function(err, cheese) {
          if(err)
@@ -88,4 +88,4 @@ module.exports = {
   getCheese : getCheese,
   getidCheese : getidCheese,
   postCheese : postCheese
-}
+};

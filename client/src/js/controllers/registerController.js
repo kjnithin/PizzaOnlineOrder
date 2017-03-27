@@ -11,6 +11,8 @@ app.controller('registerController', ['$scope', '$location', 'toastr', 'connectH
             });
     };
 
+    $scope.phone =/^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
+
     connectHttp.provinceHttp()
         .then(function(response) {
             $scope.provinceName = response.data;

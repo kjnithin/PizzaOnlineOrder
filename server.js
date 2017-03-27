@@ -8,8 +8,6 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-
-
 var auth = require('./app/authenticate/auth');
 var userController = require('./app/controllers/userController');
 var provinceController = require('./app/controllers/provinceController');
@@ -18,11 +16,10 @@ var crustController = require('./app/controllers/crustController');
 var cheeseController = require('./app/controllers/cheeseController');
 var toppingController = require('./app/controllers/toppingController');
 
-
-
 mongoose.set('debug', true);
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://user:admin123@ds033317.mlab.com:33317/tutoraildb');
+// mongoose.Promise = global.Promise;
+var options = { promiseLibrary: require('bluebird') };
+mongoose.connect('mongodb://user:admin123@ds033317.mlab.com:33317/tutoraildb',options);
 mongoose.connection.on('error', function(err) {
     console.log(err);
 });
@@ -36,28 +33,20 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(validator());
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/js', express.static(__dirname + '/client/src/js'));
-app.use('/css', express.static(__dirname + '/client/src/css'));
-app.use('/views', express.static(__dirname + '/client/views'));
-app.use('/lib', express.static(__dirname + '/client/lib'));
-app.use('/dist', express.static(__dirname + '/client/dist'));
+app.use(express.static(__dirname +'/client'));
+// app.use(express.static(__dirname +'/dist'));
 
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname+"/client/index.html");
 });
-
 
 // Login using local authentication
 app.post('/login', passport.authenticate('local'),
@@ -114,6 +103,7 @@ app.post('/toppings', toppingController.postTopping);
 app.get('/toppings/:topping_id', toppingController.getidTopping);
 app.put('/toppings/:topping_id', toppingController.putTopping);
 app.delete('/toppings/:topping_id', toppingController.deleteTopping);
+
 
 var port = process.env.PORT || 3000;
 

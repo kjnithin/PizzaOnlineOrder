@@ -72,7 +72,7 @@ Crust.findById(req.params.crust_id, function(err, crust) {
 
 
 var deleteCrust = function(req,res) {
-  crust.remove({
+  Crust.remove({
          _id: req.params.crust_id
        }, function(err, crust) {
          if(err)
@@ -88,4 +88,4 @@ module.exports = {
   getidCrust : getidCrust,
   getCrust : getCrust,
   postCrust : postCrust
-}
+};

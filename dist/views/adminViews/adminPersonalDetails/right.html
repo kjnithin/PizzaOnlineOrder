@@ -1,0 +1,29 @@
+<div class="col-md-6 well form-horizontal">
+  <p class="tab-header">Personal Details</p>
+
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails ">Name:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{adminDetails.name | firstCapital}}</div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">User Name:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{adminDetails.userName}}</div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">Email:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{adminDetails.email}}</div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">Address:</label>
+      <div class="col-md-8" class="showPersonalDetails"><div><span ng-bind="adminDetails.apt"></span></div>
+                                                        <div>{{adminDetails.street | firstCapital}}</div>
+                                                        <div>{{adminDetails.city |firstCapital}}, {{adminDetails.province | firstCapital}}</div>
+                                                        <div>{{adminDetails.postal | capitalize}}</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails">Phone:</label>
+      <div class="col-md-8" class="showPersonalDetails">{{adminDetails.phone}}</div>
+  </div>
+  </div>
+</div>
