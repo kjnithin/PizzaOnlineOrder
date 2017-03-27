@@ -119,9 +119,7 @@ app.controller("adminController", ['$scope', 'connectHttp','toastr','$localStora
     $scope.deleteVeggieTopping = function(val,veggieTopping,index){
         connectHttp.deleteToppings(val)
             .then(function(response){
-                console.log(response);
                 if(response.status === 200){
-                    console.log(veggieTopping,index);
                     veggieTopping.splice(index,1);
                 }
                 else{

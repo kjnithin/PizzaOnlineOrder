@@ -1025,6 +1025,11 @@ button i {
 /*end*/
 
 /*This is to set the dimension for the well for login form*/
+
+#login{
+    padding-top:30px;
+}
+
 #loginWell {
     width: 500px;
     height: 340px;
@@ -1051,7 +1056,7 @@ button i {
 
 /*This is to add padding for the login form*/
 #loginForm {
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 /*end*/
