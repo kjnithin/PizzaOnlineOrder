@@ -1,10 +1,8 @@
-
-
 <h2 class="text-center">Make your Pizza</h2>
 <div class="row">
     <div class="col-md-10 well">
         <h3>Size</h3>
-        <md-card ng-repeat="size in sizeData" class="col-md-5">
+        <md-card ng-repeat="size in sizeData | orderBy:'name'" class="col-md-5 card">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline"><strong>{{size.name | firstCapital}}</strong></span>
@@ -20,7 +18,7 @@
 
     <div class="col-md-10 well">
         <h3>Crust</h3>
-        <md-card ng-repeat="crust in crustValue" class="col-md-5">
+        <md-card ng-repeat="crust in crustValue |  orderBy:'name'" class="col-md-5 card">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline"><strong>{{crust.name | firstCapital}}</strong></span>
@@ -36,7 +34,7 @@
 
     <div class="col-md-10 well">
         <h3>Cheese</h3>
-        <md-card ng-repeat="cheese in cheeseValue" class="col-md-5">
+        <md-card ng-repeat="cheese in cheeseValue |  orderBy:'name'" class="col-md-5 card">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline"><strong>{{cheese.name | firstCapital}}</strong></span>
@@ -54,7 +52,7 @@
     <div class="col-md-10 well">
         <h3>Toppings</h3>
         <h4 class="subhead">Veggies</h4>
-        <md-card ng-repeat="topping in toppingData | filter: 'veggie' | orderBy:'name'" class="col-md-5">
+        <md-card ng-repeat="topping in toppingData | filter: 'veggie' | orderBy:'name'" class="col-md-5 card">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline"><strong>{{topping.name | firstCapital}}</strong></span>
@@ -69,7 +67,7 @@
 
         <div class="col-md-10 well">
         <h4 class="subhead">Meat</h4>
-        <md-card ng-repeat="topping in toppingData | filter: 'meat' | orderBy:'name'" class="col-md-5">
+        <md-card ng-repeat="topping in toppingData | filter: 'meat' | orderBy:'name'" class="col-md-5 card">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline"><strong>{{topping.name | firstCapital}}</strong></span>
@@ -84,5 +82,5 @@
     </div>
 </div>
 
-<div class="col-md-2 well">ad</div>
+
 

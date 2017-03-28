@@ -16,6 +16,7 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         .state('login', {
             url: '/Login',
             templateUrl: 'views/login.html',
+            hideLogoutIcon:true
         })
 
         .state('register', {
