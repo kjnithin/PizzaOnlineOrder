@@ -1,28 +1,31 @@
-<div class="alert alert-danger" role="alert" ng-if="showAlert"><i class="fa fa-user fa-2x" aria-hidden="true"></i> <strong>There are no users in the system !!!</strong></div>
+<div class="alert alert-danger" role="alert" ng-if="showAlert"><i class="fa fa-user fa-2x" aria-hidden="true"></i>
+    <strong>There are no users in the system !!!</strong></div>
 
 <div class='row'>
 
-<md-card ng-repeat="user in userValue | orderBy : 'name'" class="col-md-5">
-    <md-card-title>
-        <div>
-            <p>
-                <span class="md-subhead bolder"><span ng-bind="user.name | firstCapital"></span></span>
-                <span class="md-subhead"><span ng-bind="user.email"></span></span>
-            </p>
-            <p class="md-subhead"> <strong>Address</strong></p>
+    <md-card ng-repeat="user in userValue | orderBy : 'name'" class="col-md-5">
+        <md-card-title>
             <div>
-           <div><span ng-bind="user.apt"></span>, <span ng-bind="user.street | firstCapital"></span></div>
-           <div><span ng-bind="user.city | firstCapital"></span>, <span ng-bind="user.province | firstCapital"></span></div>
-           <div><span ng-bind="user.postal | capitalize"></span></div>
+                <p>
+                    <span class="md-subhead bolder"><span ng-bind="user.name | firstCapital"></span></span>
+                    <span class="md-subhead"><span ng-bind="user.email"></span></span>
+                </p>
+                <p class="md-subhead"><strong>Address</strong></p>
+                <div>
+                    <div><span ng-bind="user.apt"></span>, <span ng-bind="user.street | firstCapital"></span></div>
+                    <div><span ng-bind="user.city | firstCapital"></span>, <span
+                            ng-bind="user.province | firstCapital"></span></div>
+                    <div><span ng-bind="user.postal | capitalize"></span></div>
+                </div>
             </div>
-        </div>
-        <div>
-            <md-button class="md-fab md-default md-hue-2" aria-label="Profile" ng-click="delete(user._id ,userValue, $index)">
-                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
-                <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
-            </md-button>
-        </div>
-       </md-card-title>
-     </md-card>
+            <div style="padding-left:40%">
+                <md-button class="md-fab md-default md-hue-2" aria-label="Profile"
+                           ng-click="delete(user._id ,userValue, $index)">
+                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                    <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
+                </md-button>
+            </div>
+        </md-card-title>
+    </md-card>
 
 </div>

@@ -1445,3 +1445,12 @@ md-card:hover {
 .subhead{
     padding: 10px 0 0 7px;
 }
+
+.card:active{
+    position: relative;
+    top: 1px;
+}
+
+.card:hover{
+    cursor: pointer;
+}

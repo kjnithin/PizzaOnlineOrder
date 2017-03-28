@@ -38,6 +38,10 @@ gulp.task('copyViews',function(){
         .pipe(gulp.dest('dist/views'));
 });
 
+gulp.task('copyImages',function(){
+    return gulp.src('client/images/*')
+        .pipe(gulp.dest('dist/images'));
+});
 gulp.task('default',function(callback){
-    runSequence('Linting','Cleaning','minifyFiles','copyFont','copyViews',callback);
+    runSequence('Linting','Cleaning','minifyFiles','copyFont','copyViews','copyImages',callback);
 });
