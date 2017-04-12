@@ -17,13 +17,18 @@ var cheeseController = require('./app/controllers/cheeseController');
 var toppingController = require('./app/controllers/toppingController');
 
 mongoose.set('debug', true);
-// mongoose.Promise = global.Promise;
 var options = { promiseLibrary: require('bluebird') };
 mongoose.connect('mongodb://user:admin123@ds129030.mlab.com:29030/heroku_3thhq152',options);
 mongoose.connection.on('error', function(err) {
     console.log(err);
 });
 
+// mongoose.set('debug', true);
+// var options = { promiseLibrary: require('bluebird') };
+// mongoose.connect('mongodb://user:admin123@ds033317.mlab.com:33317/tutoraildb',options);
+// mongoose.connection.on('error', function(err) {
+//     console.log(err);
+// });
 
 
 app.use(function(req, res, next) {

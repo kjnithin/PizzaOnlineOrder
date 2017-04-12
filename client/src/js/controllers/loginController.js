@@ -40,6 +40,7 @@ app.controller('loginController', ['$scope', 'toastr', 'connectHttp', '$state', 
                         $scope.auth = {email: $scope.email};
                         connectHttp.googleAuth($scope.auth)
                             .then(function (response) {
+                                    $localStorage.userdata = response.data;
                                     if (response.data.role === "admin") {
                                         $state.go('admin.order');
                                     }

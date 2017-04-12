@@ -32,7 +32,7 @@ passport.use(new LocalStrategy({
  });
 
 var authUser = function(req,res){
-  User.findOne(req.params.email , function(err,data){
+  User.findOne({'email': req.body.email} , function(err,data){
     if(err){
       res.json(err);
     }else{
