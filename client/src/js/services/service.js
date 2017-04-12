@@ -1,5 +1,5 @@
 app.service('connectHttp', ['$http', function ($http) {
-    var baseUrl = 'http://localhost:3000';
+    var baseUrl = 'https://agile-hollows-91136.herokuapp.com';
 
     this.logoutHttp = function () {
         return $http.get(baseUrl + '/logout');

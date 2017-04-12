@@ -19,7 +19,7 @@ var toppingController = require('./app/controllers/toppingController');
 mongoose.set('debug', true);
 // mongoose.Promise = global.Promise;
 var options = { promiseLibrary: require('bluebird') };
-mongoose.connect('mongodb://user:admin123@ds033317.mlab.com:33317/tutoraildb',options);
+mongoose.connect('mongodb://user:admin123@ds129030.mlab.com:29030/heroku_3thhq152',options);
 mongoose.connection.on('error', function(err) {
     console.log(err);
 });
