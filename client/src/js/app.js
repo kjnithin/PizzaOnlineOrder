@@ -21,7 +21,7 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
 
         .state('register', {
             url: '/Register',
-            templateUrl: 'views/register.html',
+            templateUrl: 'views/Register.html',
         })
 
         .state('register.step1', {
