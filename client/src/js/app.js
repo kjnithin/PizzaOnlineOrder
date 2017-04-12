@@ -103,10 +103,10 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
                     templateUrl: 'views/userViews/user_details.html'
                 },
                 'left@user.details': {
-                    templateUrl: 'views/userViews/UserDetails/userDetailsLeft.html'
+                    templateUrl: 'views/userViews/userDetails/userDetailsLeft.html'
                 },
                 'right@user.details': {
-                    templateUrl: 'views/userViews/UserDetails/userDetailsRight.html'
+                    templateUrl: 'views/userViews/userDetails/userDetailsRight.html'
                 }
             }
         });
