@@ -3,6 +3,11 @@
     box-sizing: border-box;
 }
 
+.container{
+    display:flex;
+    display: -webkit-flex;
+}
+
 #copyright {
     padding-top: 15px;
 }
@@ -1388,6 +1393,12 @@ md-card {
 
 md-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor:pointer;
+}
+
+md-card:active {
+    position: relative;
+    top: 2px;
 }
 
 .edit {
