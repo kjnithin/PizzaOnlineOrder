@@ -2,15 +2,12 @@
     <strong>There are no users in the system !!!</strong></div>
 
 <div class='row'>
-
     <md-card ng-repeat="user in userValue | orderBy : 'name'" class="col-md-5">
         <md-card-title>
             <div>
-                <p>
-                    <span class="md-subhead bolder"><span ng-bind="user.name | firstCapital"></span></span>
-                    <span class="md-subhead"><span ng-bind="user.email"></span></span>
-                </p>
-                <p class="md-subhead"><strong>Address</strong></p>
+                <p><span class="md-subhead bolder"><span ng-bind="user.name | firstCapital"></span></span></p>
+                <p><span class="md-subhead"><span ng-bind="user.email"></span></span></p>
+                <div class="md-subhead"><strong>Address</strong></div>
                 <div>
                     <div><span ng-bind="user.apt"></span>, <span ng-bind="user.street | firstCapital"></span></div>
                     <div><span ng-bind="user.city | firstCapital"></span>, <span
@@ -19,13 +16,37 @@
                 </div>
             </div>
             <div style="padding-left:40%">
-                <md-button class="md-fab md-default md-hue-2" aria-label="Profile"
-                           ng-click="delete(user._id ,userValue, $index)">
+                <md-button class="md-fab md-default md-hue-2" aria-label="Profile" data-toggle="modal" data-target="#adminUserDel" id="adminModal" ng-click="openModal(user)">
                     <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                     <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
                 </md-button>
             </div>
         </md-card-title>
     </md-card>
-
 </div>
+
+<!--Modal for deleting the user-->
+<div class="modal fade" id="adminUserDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-trash-o fa-fw"></i> Delete</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class='col-md-12 text-center'>
+                    <p>Do you want to delete the user account for {{person.name}}?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="delete(person, person._id ,userValue)">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Modal for deleting the account-->

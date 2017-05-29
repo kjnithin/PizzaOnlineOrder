@@ -19,14 +19,13 @@
                     <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
-                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteSize(size._id ,sizeData, $index)"></i>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteSize" id="deleteSizeModal" ng-click="deleteItem(size)" ></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
                     </div>
                 </md-card-actions>
             </md-card>
         </div>
         <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
-
     </div>
 
     <div class="row well">
@@ -47,7 +46,7 @@
                     <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
-                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteCrust(crust._id ,crustValue, $index)"></i>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteCrust" id="deleteCrustModal" ng-click="deleteItem(crust)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
                     </div>
                 </md-card-actions>
@@ -75,7 +74,7 @@
                     <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
-                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteCheese(cheese._id ,cheeseValue, $index)"></i>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteCheese" id="deleteCheeseModal" ng-click="deleteItem(cheese)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
                     </div>
                 </md-card-actions>
@@ -104,7 +103,7 @@
                     <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
-                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteTopping(topping._id ,topping)"></i>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deletetoppings" id="deleteToppingModal" ng-click="deleteItem(topping)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
                     </div>
                 </md-card-actions>
@@ -130,14 +129,142 @@
                     <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
-                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" ng-click="deleteTopping(topping._id ,topping)"></i>
+                    <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteMeat" id="deleteMeatModal" ng-click="deleteItem(topping)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
                     </div>
                 </md-card-actions>
             </md-card>
         </div>
-
     </div>
 </div>
 
 
+<!--Modal for deleting the Size-->
+<div class="modal fade" id="deleteSize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-trash-o fa-fw"></i> Delete</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class='col-md-12 text-center'>
+                    <p>Do you want to delete {{item.name}} Size?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteSize(item,item._id ,sizeData)">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Modal for deleting the Size-->
+
+<!--Modal for deleting the crust-->
+<div class="modal fade" id="deleteCrust" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-trash-o fa-fw"></i> Delete</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class='col-md-12 text-center'>
+                    <p>Do you want to delete {{item.name}} Crust?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteCrust(item, item._id ,crustValue)">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Modal for deleting the crust-->
+
+<!--Modal for deleting the cheese-->
+<div class="modal fade" id="deleteCheese" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-trash-o fa-fw"></i> Delete</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class='col-md-12 text-center'>
+                    <p>Do you want to delete {{item.name}} Cheese?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteCheese(item, item._id ,cheeseValue)">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Modal for deleting the cheese-->
+
+<!--Modal for deleting the veggie toppings-->
+<div class="modal fade" id="deletetoppings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-trash-o fa-fw"></i> Delete</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class='col-md-12 text-center'>
+                    <p>Do you want to delete {{item.name}}?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteVeggieTopping(item, item._id ,toppingData)">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Modal for deleting the toppings-->
+
+<!--Modal for deleting the meat toppings-->
+<div class="modal fade" id="deleteMeat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-trash-o fa-fw"></i> Delete</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class='col-md-12 text-center'>
+                    <p>Do you want to delete {{item.name}}?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteTopping(item._id ,item)">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Modal for deleting the meat toppings-->

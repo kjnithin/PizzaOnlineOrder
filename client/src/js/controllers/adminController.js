@@ -25,10 +25,19 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
         tipDirection: 'bottom'
     };
 
-    $scope.delete = function (val, userData, index) {
+    angular.element('#adminModal').trigger('click');
+    $scope.openModal = function(user){
+        $scope.person = user;
+    };
+
+    $scope.delete = function (item, val, userData) {
         connectHttp.deleteUser(val)
             .then(function (response) {
                 if (response.status === 200) {
+                    angular.element('#adminUserDel').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                    var index = userData.indexOf(item);
                     userData.splice(index, 1);
                     if (userData.length <= 0) {
                         $scope.showAlert = true;
@@ -50,10 +59,19 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             $scope.sizeData = sizeValue;
         });
 
-    $scope.deleteSize = function (val, size, index) {
+    angular.element('#deleteSizeModal').trigger('click');
+    $scope.deleteItem = function(item){
+        $scope.item = item;
+    }
+
+    $scope.deleteSize = function (item,val, size) {
         connectHttp.deleteSize(val)
             .then(function (response) {
                 if (response.status === 200) {
+                    angular.element('#deleteSize').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                    var index = size.indexOf(item);
                     size.splice(index, 1);
                 }
                 else {
@@ -68,15 +86,19 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             for (var i = 0; i < response.data.length; i++) {
                 crustData.push(response.data[i]);
             }
-
             $scope.crustValue = crustData;
 
         });
 
-    $scope.deleteCrust = function (val, crust, index) {
+    angular.element('#deleteCrustModal').trigger('click');
+    $scope.deleteCrust = function (item, val, crust) {
         connectHttp.deleteCrust(val)
             .then(function (response) {
                 if (response.status === 200) {
+                    angular.element('#deleteCrust').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                    var index = crust.indexOf(item);
                     crust.splice(index, 1);
                 }
                 else {
@@ -94,10 +116,16 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             $scope.cheeseValue = cheeseData;
         });
 
-    $scope.deleteCheese = function (val, cheese, index) {
+    angular.element('#deleteCheeseModal').trigger('click');
+
+    $scope.deleteCheese = function (item, val, cheese) {
         connectHttp.deleteCheese(val)
             .then(function (response) {
                 if (response.status === 200) {
+                    angular.element('#deleteCheese').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                    var index = cheese.indexOf(item);
                     cheese.splice(index, 1);
                 }
                 else {
@@ -115,10 +143,15 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             $scope.toppingData = toppingValue;
         });
 
-    $scope.deleteVeggieTopping = function (val, veggieTopping, index) {
+    angular.element('#deleteToppingModal').trigger('click');
+    $scope.deleteVeggieTopping = function (item , val, veggieTopping) {
         connectHttp.deleteToppings(val)
             .then(function (response) {
                 if (response.status === 200) {
+                    angular.element('#deletetoppings').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                    var index = veggieTopping.indexOf(item);
                     veggieTopping.splice(index, 1);
                 }
                 else {
@@ -127,10 +160,15 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             });
     };
 
+    angular.element('#deleteMeatModal').trigger('click');
+
     $scope.deleteTopping = function (val, meatTopping) {
         connectHttp.deleteToppings(val)
             .then(function (response) {
                 if (response.status === 200) {
+                    angular.element('#deleteMeat').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
                     $scope.toppingData.splice($scope.toppingData.indexOf(meatTopping), 1);
                 }
                 else {

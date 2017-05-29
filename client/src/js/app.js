@@ -4,7 +4,7 @@ var app = angular.module('pizzaOrder', [
     'toastr',
     'ngMaterial',
     'ngStorage',
-    'ui.bootstrap.modal'
+    'ui.bootstrap'
 ]);
 
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
@@ -86,11 +86,6 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             templateUrl: 'views/user.html'
         })
 
-        .state('user.order', {
-            url: '/Order',
-            templateUrl: 'views/userViews/user_order.html'
-        })
-
         .state('user.history', {
             url: '/History',
             templateUrl: 'views/userViews/user_history.html'
@@ -107,6 +102,21 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
                 },
                 'right@user.details': {
                     templateUrl: 'views/userViews/userDetails/userDetailsRight.html'
+                }
+            }
+        })
+
+        .state('user.order', {
+            url: '/Order',
+            views: {
+                '': {
+                    templateUrl: 'views/userViews/user_order.html'
+                },
+                'left@user.order': {
+                    templateUrl: 'views/userViews/userOrder/userOrderLeft.html'
+                },
+                'right@user.order': {
+                    templateUrl: 'views/userViews/userOrder/userOrderRight.html'
                 }
             }
         });
