@@ -1,6 +1,8 @@
-<div class="col-md-8 well">
-   <div>
+<div class="col-md-9 well">
+
+    <div class="col-md-12 well">
     <h3>Size</h3>
+
     <md-card ng-repeat="size in sizeData | orderBy:'name'" class="col-md-5 card" ng-click="chooseSize(size)">
         <md-card-title>
             <md-card-title-text>
@@ -11,10 +13,11 @@
                 <div class="md-media-lg card-media"><img ng-src="{{size.image}}"></div>
             </md-card-title-media>
         </md-card-title >
-    </md-card>
-   </div>
 
-    <div>
+    </md-card>
+    </div>
+
+    <div class="col-md-12 well">
     <h3>Crust</h3>
     <md-card ng-repeat="crust in crustValue |  orderBy:'name'" class="col-md-5 card" ng-click="chooseCrust(crust)">
         <md-card-title>
@@ -30,7 +33,7 @@
     </div>
 
 
-
+    <div class="col-md-12 well">
     <h3>Cheese</h3>
     <md-card ng-repeat="cheese in cheeseValue |  orderBy:'name'" class="col-md-5 card" ng-click="chooseCheese(cheese)">
         <md-card-title>
@@ -43,13 +46,13 @@
             </md-card-title-media>
         </md-card-title>
     </md-card>
+    </div>
 
 
 
-
-
+    <div class="col-md-12 well">
     <h3>Toppings</h3>
-    <h4 class="subhead" ng-if="veggie">Veggies</h4>
+    <h4 class="subhead">Veggies</h4>
     <md-card ng-repeat="topping in toppingData | filter: 'veggie' | orderBy:'name'" class="col-md-5 card" ng-click="chooseVeggie(topping)">
         <md-card-title>
             <md-card-title-text>
@@ -61,10 +64,10 @@
             </md-card-title-media>
         </md-card-title>
     </md-card>
+    </div>
 
-
-
-    <h4 class="subhead" ng-if="meat">Meat</h4>
+    <div class="col-md-12 well">
+    <h4 class="subhead">Meat</h4>
     <md-card ng-repeat="topping in toppingData | filter: 'meat' | orderBy:'name'" class="col-md-5 card" ng-click="chooseMeat(topping)">
         <md-card-title>
             <md-card-title-text>
@@ -76,6 +79,6 @@
             </md-card-title-media>
         </md-card-title>
     </md-card>
-
+    </div>
 </div>
 

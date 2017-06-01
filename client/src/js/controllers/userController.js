@@ -69,58 +69,58 @@ app.controller("userController", ['$scope', '$localStorage', 'connectHttp','$sta
     //     console.log (userDetails);
     // }
 
-     $scope.chooseSize = function (order){
-         if(!order ){
-             $scope.size = false;
-         } else{
-             $scope.size = true;
-             $scope.sizeName = order.name;
-             $scope.sizePrice = order.price;
-         }
-     };
+     // $scope.chooseSize = function (order){
+     //     if(!order ){
+     //         $scope.size = false;
+     //     } else{
+     //         $scope.size = true;
+     //         $scope.sizeName = order.name;
+     //         $scope.sizePrice = order.price;
+     //     }
+     // };
+     //
+     // $scope.chooseCrust = function(order){
+     //     if(!order){
+     //         $sccope.crust = false;
+     //     }else{
+     //         $scope.crust = true;
+     //         $scope.crustName = order.name;
+     //         $scope.crustPrice = order.price;
+     //     }
+     // };
+     //
+     // $scope.chooseCheese = function(order){
+     //     if(!order){
+     //         $scope.cheese = false;
+     //     }else{
+     //         $scope.cheese = true;
+     //         $scope.cheeseName = order.name;
+     //         $scope.cheesePrice = order.price;
+     //     }
+     // };
 
-     $scope.chooseCrust = function(order){
-         if(!order){
-             $sccope.crust = false;
-         }else{
-             $scope.crust = true;
-             $scope.crustName = order.name;
-             $scope.crustPrice = order.price;
-         }
-     };
+     // var veggieArray = [];
+     // $scope.chooseVeggie = function(order){
+     //     veggieArray.push(order);
+     //     if(!order){
+     //         $scope.veggie = false;
+     //     }else{
+     //         $scope.veggie = true;
+     //        $scope.veggieObject = veggieArray;
+     //     }
+     // };
 
-     $scope.chooseCheese = function(order){
-         if(!order){
-             $scope.cheese = false;
-         }else{
-             $scope.cheese = true;
-             $scope.cheeseName = order.name;
-             $scope.cheesePrice = order.price;
-         }
-     };
+    // var meatArray =[];
+    // $scope.chooseMeat = function(order){
+    //     meatArray.push(order);
+    //     if(!order){
+    //         $scope.meat = false;
+    //     }else{
+    //         $scope.meat = true;
+    //         $scope.meatObject = meatArray;
 
-     var veggieArray = [];
-     $scope.chooseVeggie = function(order){
-         veggieArray.push(order);
-         if(!order){
-             $scope.veggie = false;
-         }else{
-             $scope.veggie = true;
-            $scope.veggieObject = veggieArray;
-         }
-     };
-
-    var meatArray =[];
-    $scope.chooseMeat = function(order){
-        meatArray.push(order);
-        if(!order){
-            $scope.meat = false;
-        }else{
-            $scope.meat = true;
-            $scope.meatObject = meatArray;
-
-        }
-    };
+    //     }
+    // };
 
 
 
