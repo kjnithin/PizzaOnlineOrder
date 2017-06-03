@@ -1,41 +1,47 @@
 app.controller("userController", ['$scope', '$localStorage', 'connectHttp','$stateParams','$state','$window','toastr', function ($scope, $localStorage, connectHttp,$stateParams,$state,$window,toastr) {
     $scope.userDetails = $localStorage.userdata;
-    connectHttp.getSize()
-        .then(function (response) {
-            var sizeValue = [];
-            for (var i = 0; i < response.data.length; i++) {
-                sizeValue.push(response.data[i]);
-            }
-            $scope.sizeData = sizeValue;
-        });
 
-    connectHttp.getCrust()
-        .then(function (response) {
-            var crustData = [];
-            for (var i = 0; i < response.data.length; i++) {
-                crustData.push(response.data[i]);
-            }
-            $scope.crustValue = crustData;
 
-        });
+    function init(){
+        connectHttp.getSize()
+            .then(function (response) {
+                var sizeValue = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    sizeValue.push(response.data[i]);
+                }
+                $scope.sizeData = sizeValue;
+            });
 
-    connectHttp.getCheese()
-        .then(function (response) {
-            var cheeseData = [];
-            for (var i = 0; i < response.data.length; i++) {
-                cheeseData.push(response.data[i]);
-            }
-            $scope.cheeseValue = cheeseData;
-        });
+        connectHttp.getCrust()
+            .then(function (response) {
+                var crustData = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    crustData.push(response.data[i]);
+                }
+                $scope.crustValue = crustData;
 
-    connectHttp.getTopping()
-        .then(function (response) {
-            var toppingValue = [];
-            for (var i = 0; i < response.data.length; i++) {
-                toppingValue.push(response.data[i]);
-            }
-            $scope.toppingData = toppingValue;
-        });
+            });
+
+        connectHttp.getCheese()
+            .then(function (response) {
+                var cheeseData = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    cheeseData.push(response.data[i]);
+                }
+                $scope.cheeseValue = cheeseData;
+            });
+
+        connectHttp.getTopping()
+            .then(function (response) {
+                var toppingValue = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    toppingValue.push(response.data[i]);
+                }
+                $scope.toppingData = toppingValue;
+            });
+    }
+
+    init();
 
     angular.element('#myModalShower').trigger('click');
 
@@ -52,76 +58,37 @@ app.controller("userController", ['$scope', '$localStorage', 'connectHttp','$sta
                     angular.element('#myModalShower').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
-                    toastr.success('Account has beed deleted successfully!!!');
+                    toastr.success('Account has been deleted successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             });
     };
 
+    $scope.editItem = function(val){
+        $scope.details = val;
+        console.log($scope.details);
+    }
 
-    // angular.element('#myModal').trigger('click');
-    // connectHttp.provinceHttp()
-    //     .then(function(response){
-    //         $scope.province = response.data;
-    //     });
+    angular.element('#editUserModal').trigger('click');
 
-    // $scope.userDetails = {};
-    // $scope.update = function(){
-    //     console.log (userDetails);
-    // }
-
-     // $scope.chooseSize = function (order){
-     //     if(!order ){
-     //         $scope.size = false;
-     //     } else{
-     //         $scope.size = true;
-     //         $scope.sizeName = order.name;
-     //         $scope.sizePrice = order.price;
-     //     }
-     // };
-     //
-     // $scope.chooseCrust = function(order){
-     //     if(!order){
-     //         $sccope.crust = false;
-     //     }else{
-     //         $scope.crust = true;
-     //         $scope.crustName = order.name;
-     //         $scope.crustPrice = order.price;
-     //     }
-     // };
-     //
-     // $scope.chooseCheese = function(order){
-     //     if(!order){
-     //         $scope.cheese = false;
-     //     }else{
-     //         $scope.cheese = true;
-     //         $scope.cheeseName = order.name;
-     //         $scope.cheesePrice = order.price;
-     //     }
-     // };
-
-     // var veggieArray = [];
-     // $scope.chooseVeggie = function(order){
-     //     veggieArray.push(order);
-     //     if(!order){
-     //         $scope.veggie = false;
-     //     }else{
-     //         $scope.veggie = true;
-     //        $scope.veggieObject = veggieArray;
-     //     }
-     // };
-
-    // var meatArray =[];
-    // $scope.chooseMeat = function(order){
-    //     meatArray.push(order);
-    //     if(!order){
-    //         $scope.meat = false;
-    //     }else{
-    //         $scope.meat = true;
-    //         $scope.meatObject = meatArray;
-
-    //     }
-    // };
-
+    $scope.editUserObject = {};
+    $scope.editUser = function(id){
+       $scope.editUserObject = {"name":$scope.details.name , "userName":$scope.details.userName, "email":$scope.details.email, "apt":$scope.details.apt, "street": $scope.details.street, "city":$scope.details.city, "province":$scope.details.province, "postal":$scope.details.postal, "phone":$scope.details.phone};
+       connectHttp.putUser(id, $scope.editUserObject)
+           .then(function (response) {
+               if(response.status === 200){
+                   angular.element('#editUser').modal('hide');
+                   angular.element('body').removeClass('modal-open');
+                   angular.element('.modal-backdrop').remove();
+                   toastr.success('updated successfully!!!');
+               }
+               else {
+                   toastr.error('Something is Wrong!!!');
+               }
+           })
+    };
 
 
 

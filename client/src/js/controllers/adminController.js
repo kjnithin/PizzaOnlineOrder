@@ -105,9 +105,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('.modal-backdrop').remove();
                     var index = size.indexOf(item);
                     size.splice(index, 1);
+                    toastr.success('deleted successfully!!!');
                 }
                 else {
-                    toastr.error('Error!!!');
+                    toastr.error('Something is Wrong!!!');
                 }
             });
     };
@@ -123,9 +124,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('.modal-backdrop').remove();
                     var index = crust.indexOf(item);
                     crust.splice(index, 1);
+                    toastr.success('deleted successfully!!!');
                 }
                 else {
-                    toastr.error('Error!!!');
+                    toastr.error('Something is Wrong!!!');
                 }
             });
     };
@@ -141,9 +143,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('.modal-backdrop').remove();
                     var index = cheese.indexOf(item);
                     cheese.splice(index, 1);
+                    toastr.success('deleted successfully!!!');
                 }
                 else {
-                    toastr.error('Error!!!');
+                    toastr.error('Something is Wrong!!!');
                 }
             });
     };
@@ -159,9 +162,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('.modal-backdrop').remove();
                     var index = veggieTopping.indexOf(item);
                     veggieTopping.splice(index, 1);
+                    toastr.success('deleted successfully!!!');
                 }
                 else {
-                    toastr.error('Error!!!');
+                    toastr.error('Something is Wrong!!!');
                 }
             });
     };
@@ -176,9 +180,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
                     $scope.toppingData.splice($scope.toppingData.indexOf(meatTopping), 1);
+                    toastr.success('deleted successfully!!!');
                 }
                 else {
-                    toastr.error('Error!!!');
+                    toastr.error('Something is Wrong!!!');
                 }
             });
     };
@@ -194,6 +199,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#addSize').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('Added successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -209,6 +218,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#addCrust').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('Added successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -224,6 +237,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#addCheese').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('Added successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -239,6 +256,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#addTopping').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('Added successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -258,6 +279,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#updateSize').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('updated successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -273,6 +298,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#updateCrust').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('updated successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -288,6 +317,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#updateCheese').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('updated successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -303,6 +336,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#updateMeat').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('updated successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };
@@ -318,6 +355,10 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                     angular.element('#updateVeggie').modal('hide');
                     angular.element('body').removeClass('modal-open');
                     angular.element('.modal-backdrop').remove();
+                    toastr.success('updated successfully!!!');
+                }
+                else {
+                    toastr.error('Something is Wrong!!!');
                 }
             })
     };

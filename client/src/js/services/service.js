@@ -97,4 +97,8 @@ app.service('connectHttp', ['$http', function ($http) {
     this.putMeat = function(id,val){
         return $http.put(baseUrl+'/toppings/'+id, val);
     }
+
+    this.putUser = function(id,val){
+        return $http.put(baseUrl+'/users/'+id, val);
+    }
 }]);

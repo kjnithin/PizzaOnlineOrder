@@ -3,7 +3,7 @@
       <div class="col-md-offset-2">
           <span class="fa-stack fa-5x fa menu-blob">
     <i class="fa fa-circle fa-stack-2x blue-bb"></i>
-    <i class="fa fa fa-edit fa-stack-1x" style='color:white;' id="editIcon" data-toggle="modal" data-target="#myModalEdit" id="myModal"></i>
+    <i class="fa fa fa-edit fa-stack-1x" style='color:white;' id="editIcon" data-toggle="modal" data-target="#editUser" id="editUserModal" ng-click="editItem(userDetails)"></i>
   </span>
           <div clss="col-md-offset-1">
               <h3 class='text-medium' id="editUserBtn">Edit</h3>
@@ -47,66 +47,68 @@
 </div>
 <!--End of Modal for deleting the account-->
 
-<!--Modal for editing the user account-->
-<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+<!--Modal for editing the user-->
+<div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header row">
                 <div class='col-xs-10 rm-padding'>
-                    <h2 class="modal-title" id="modalLabel">  <i class="fa fa-user fa-fw"></i> Edit Profile</h2>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-user fa-fw"></i> Edit Profile</h2>
                 </div>
-  <div class="form-group">
-                        <label for="name" class="required">Name</label>
-                        <input type="text"  class="input-lg form-control" ng-model="userDetails.name" required>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form ng-submit="editUser(details._id)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label  class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="details.name" required>
                     </div>
                     <div class="form-group">
-                        <label for="username">User Name</label>
-                        <input type="text"  class="input-lg form-control" ng-model="userDetails.userName"  readonly>
+                        <label >User Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="details.userName" required>
                     </div>
                     <div class="form-group">
-
-                                        <div class='col-xs-2 rm-padding'>
-                                            <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
-                                        </div>
-                                    </div>
-                                    <form  ng-submit="update()">
-                                        <div class="modal-body">
-                                        <label for="email" class="control-label required">Email</label>
-                        <input type="email" class="input-lg form-control" ng-model="userDetails.email"  required>
+                        <label  class="control-label required">Email</label>
+                        <input type="email" class="input-lg form-control" ng-model="details.email" required>
                     </div>
                     <div class="form-group">
                         <div class='form-inline'>
                             <div class="form-group">
                                 <div class="col-xs-3">
-                                    <label for="apt" class="required">Apt.</label>
-                                    <input type="text"  class="input-lg form-control" ng-model="userDetails.apt" required>
+                                    <label  class="required">Apt.</label>
+                                    <input class="input-lg form-control"  type="text"  ng-model="details.apt" required>
                                 </div>
                                 <div class="col-xs-8">
-                                    <label for="street" class="col-md-offset-5 required">Street</label>
-                                    <input type="text" class="input-lg form-control col-md-offset-5" ng-model="userDetails.street"   required>
+                                    <label  class="col-md-offset-5 required">Street</label>
+                                    <input class="input-lg form-control col-md-offset-5" id="editStreet" type="text" ng-model="details.street" required>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputCity" class="control-label required">City</label>
-                        <input type="text" class="input-lg form-control" id="editCity" ng-model="userDetails.city" required>
+                        <label  class="control-label required">City</label>
+                        <input type="text" class="input-lg form-control" ng-model="details.city" required>
                     </div>
                     <div class="form-group">
-                        <label for="inputProvince" class="control-label required">Province</label>
-                        <select class=" input-lg form-control"   required>
-                            <option ng-repeat="province in province">{{province.name}}</option>
+                        <label class="control-label required">Province</label>
+                        <select class=" input-lg form-control" ng-model="details.province" required>
+                            <option value="Ontario">Ontario</option>
+                            <option value="Quebec">Quebec</option>
+                            <option value="Manitoba">Manitoba</option>
+                            <option value="Saskatchwan">Saskatchwan</option>
                         </select>
                     </div>
                     <div class='form-inline'>
                         <div class="form-group">
                             <div class="col-xs-6" >
-                                <label for="postal" class="required">Postal Code</label>
-                                <input type="text" class="input-lg form-control" ng-model="userDetails.postal" required>
+                                <label  class="required">Postal Code</label>
+                                <input class="input-lg form-control"  type="text" ng-model="details.postal" placeholder="xxx-xxx-xxxx" required>
                             </div>
                             <div class="col-xs-6" >
-                                <label for="telephone" class="required">Telephone</label>
-                                <input type="text" class="input-lg form-control" ng-model="userDetails.phone" required>
+                                <label  class="required">Telephone</label>
+                                <input class="input-lg form-control" type="text" ng-model="details.phone" required>
                             </div>
                         </div>
                     </div>
@@ -119,4 +121,4 @@
         </div>
     </div>
 </div>
-<!--End of modal for edit account-->
+<!--End of edit model-->
