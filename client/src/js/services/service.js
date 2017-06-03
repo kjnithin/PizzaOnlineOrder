@@ -1,6 +1,6 @@
 app.service('connectHttp', ['$http', function ($http) {
-    // var baseUrl = 'https://agile-hollows-91136.herokuapp.com';
-    var baseUrl = 'http://localhost:3000';
+    var baseUrl = 'https://agile-hollows-91136.herokuapp.com';
+    // var baseUrl = 'http://localhost:3000';
 
     this.logoutHttp = function () {
         return $http.get(baseUrl + '/logout');
@@ -62,4 +62,39 @@ app.service('connectHttp', ['$http', function ($http) {
         return $http.delete(baseUrl + '/toppings/' + val);
     };
 
+    this.postSize = function(val){
+        return $http.post(baseUrl+ '/sizes', val);
+    };
+
+    this.postCrust = function(val){
+        return $http.post(baseUrl+ '/crusts', val);
+    };
+
+    this.postCheese = function(val){
+        return $http.post(baseUrl+ '/cheeses', val);
+    };
+
+    this.postTopping = function(val){
+        return $http.post(baseUrl+ '/toppings', val);
+    };
+
+    this.putSize = function(id,val){
+        return $http.put(baseUrl+'/sizes/'+id, val);
+    };
+
+    this.putCrust = function(id,val){
+        return $http.put(baseUrl+'/crusts/'+id, val);
+    };
+
+    this.putCheese = function(id,val){
+        return $http.put(baseUrl+'/cheeses/'+id, val);
+    }
+
+    this.putVeggie = function(id,val){
+        return $http.put(baseUrl+'/toppings/'+id, val);
+    }
+
+    this.putMeat = function(id,val){
+        return $http.put(baseUrl+'/toppings/'+id, val);
+    }
 }]);

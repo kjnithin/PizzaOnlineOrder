@@ -50,14 +50,46 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             });
     };
 
-    connectHttp.getSize()
-        .then(function (response) {
-            var sizeValue = [];
-            for (var i = 0; i < response.data.length; i++) {
-                sizeValue.push(response.data[i]);
-            }
-            $scope.sizeData = sizeValue;
-        });
+    function init(){
+        connectHttp.getSize()
+            .then(function (response) {
+                var sizeValue = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    sizeValue.push(response.data[i]);
+                }
+                $scope.sizeData = sizeValue;
+            });
+
+        connectHttp.getCrust()
+            .then(function (response) {
+                var crustData = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    crustData.push(response.data[i]);
+                }
+                $scope.crustValue = crustData;
+
+            });
+
+        connectHttp.getCheese()
+            .then(function (response) {
+                var cheeseData = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    cheeseData.push(response.data[i]);
+                }
+                $scope.cheeseValue = cheeseData;
+            });
+
+        connectHttp.getTopping()
+            .then(function (response) {
+                var toppingValue = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    toppingValue.push(response.data[i]);
+                }
+                $scope.toppingData = toppingValue;
+            });
+    };
+
+    init();
 
     angular.element('#deleteSizeModal').trigger('click');
     $scope.deleteItem = function(item){
@@ -80,17 +112,8 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             });
     };
 
-    connectHttp.getCrust()
-        .then(function (response) {
-            var crustData = [];
-            for (var i = 0; i < response.data.length; i++) {
-                crustData.push(response.data[i]);
-            }
-            $scope.crustValue = crustData;
-
-        });
-
     angular.element('#deleteCrustModal').trigger('click');
+
     $scope.deleteCrust = function (item, val, crust) {
         connectHttp.deleteCrust(val)
             .then(function (response) {
@@ -106,15 +129,6 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
                 }
             });
     };
-
-    connectHttp.getCheese()
-        .then(function (response) {
-            var cheeseData = [];
-            for (var i = 0; i < response.data.length; i++) {
-                cheeseData.push(response.data[i]);
-            }
-            $scope.cheeseValue = cheeseData;
-        });
 
     angular.element('#deleteCheeseModal').trigger('click');
 
@@ -134,16 +148,8 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             });
     };
 
-    connectHttp.getTopping()
-        .then(function (response) {
-            var toppingValue = [];
-            for (var i = 0; i < response.data.length; i++) {
-                toppingValue.push(response.data[i]);
-            }
-            $scope.toppingData = toppingValue;
-        });
-
     angular.element('#deleteToppingModal').trigger('click');
+
     $scope.deleteVeggieTopping = function (item , val, veggieTopping) {
         connectHttp.deleteToppings(val)
             .then(function (response) {
@@ -177,5 +183,142 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
             });
     };
 
+    angular.element('#addSizeModal').trigger('click');
 
+    $scope.addSizeForm = {};
+    $scope.submitSize = function(){
+        connectHttp.postSize($scope.addSizeForm)
+            .then(function(response){
+                if(response.status === 200){
+                    init();
+                    angular.element('#addSize').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#addCrustModal').trigger('click');
+
+    $scope.addCrustForm = {};
+    $scope.submitCrust = function(){
+        connectHttp.postCrust($scope.addCrustForm)
+            .then(function(response){
+                if(response.status === 200){
+                    init();
+                    angular.element('#addCrust').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#addCheeseModal').trigger('click');
+
+    $scope.addCheeseForm = {};
+    $scope.submitCheese = function(){
+        connectHttp.postCheese($scope.addCheeseForm)
+            .then(function(response){
+                if(response.status === 200){
+                    init();
+                    angular.element('#addCheese').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#addToppingModal').trigger('click');
+
+    $scope.addToppingForm = {};
+    $scope.submitTopping = function(){
+        connectHttp.postTopping($scope.addToppingForm)
+            .then(function(response){
+                if(response.status === 200){
+                    init();
+                    angular.element('#addTopping').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#updateSizeModal').trigger('click');
+
+    $scope.updateItem = function(val){
+       $scope.updateForm = val;
+    };
+
+    $scope.sizeObject = {};
+    $scope.updateSize = function(id){
+        $scope.sizeObject = {"name" : $scope.updateForm.name , "price" : $scope.updateForm.price};
+        connectHttp.putSize(id, $scope.sizeObject)
+            .then(function(response){
+                if(response.status === 200){
+                    angular.element('#updateSize').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#updateCrustModal').trigger('click');
+
+    $scope.crustObject = {};
+    $scope.updateCrust = function(id){
+        $scope.crustObject = {"name" : $scope.updateForm.name , "price" : $scope.updateForm.price};
+        connectHttp.putCrust(id, $scope.crustObject)
+            .then(function(response){
+                if(response.status === 200){
+                    angular.element('#updateCrust').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#updateCheeseModal').trigger('click');
+
+    $scope.cheeseObject = {};
+    $scope.updateCheese = function(id){
+        $scope.cheeseObject = {"name" : $scope.updateForm.name , "price" : $scope.updateForm.price};
+        connectHttp.putCheese(id, $scope.cheeseObject)
+            .then(function(response){
+                if(response.status === 200){
+                    angular.element('#updateCheese').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#updateMeatModal').trigger('click');
+
+    $scope.meatObject = {};
+    $scope.updateMeat = function(id){
+        $scope.meatObject = {"name" : $scope.updateForm.name , "value":$scope.updateForm.value, "price" : $scope.updateForm.price};
+        connectHttp.putMeat(id, $scope.meatObject)
+            .then(function(response){
+                if(response.status === 200){
+                    angular.element('#updateMeat').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
+
+    angular.element('#updateVeggieModal').trigger('click');
+
+    $scope.veggieObject = {};
+    $scope.updateVeggie = function(id){
+        $scope.veggieObject = {"name" : $scope.updateForm.name , "value":$scope.updateForm.value, "price" : $scope.updateForm.price};
+        connectHttp.putVeggie(id, $scope.veggieObject)
+            .then(function(response){
+                if(response.status === 200){
+                    angular.element('#updateVeggie').modal('hide');
+                    angular.element('body').removeClass('modal-open');
+                    angular.element('.modal-backdrop').remove();
+                }
+            })
+    };
 }]);

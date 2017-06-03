@@ -16,7 +16,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" data-toggle="modal" data-target="#updateSize" id="updateSizeModal" ng-click="updateItem(size)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
                     <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteSize" id="deleteSizeModal" ng-click="deleteItem(size)" ></i>
@@ -25,7 +25,7 @@
                 </md-card-actions>
             </md-card>
         </div>
-        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+        <div class="well col-md-1 rightAddButton" data-toggle="modal" data-target="#addSize" id="addSizeModal"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
     </div>
 
     <div class="row well">
@@ -43,7 +43,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" data-toggle="modal" data-target="#updateCrust" id="updateCrustModal" ng-click="updateItem(crust)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
                     <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteCrust" id="deleteCrustModal" ng-click="deleteItem(crust)"></i>
@@ -52,7 +52,7 @@
                 </md-card-actions>
             </md-card>
         </div>
-        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+        <div class="well col-md-1 rightAddButton" data-toggle="modal" data-target="#addCrust" id="addCrustModal"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
 
     </div>
 
@@ -71,7 +71,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"  data-toggle="modal" data-target="#updateCheese" id="updateCheeseModal" ng-click="updateItem(cheese)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
                     <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteCheese" id="deleteCheeseModal" ng-click="deleteItem(cheese)"></i>
@@ -80,7 +80,7 @@
                 </md-card-actions>
             </md-card>
         </div>
-        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+        <div class="well col-md-1 rightAddButton" data-toggle="modal" data-target="#addCheese" id="addCheeseModal"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
 
     </div>
 
@@ -100,7 +100,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"  data-toggle="modal" data-target="#updateVeggie" id="updateVeggieModal" ng-click="updateItem(topping)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
                     <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deletetoppings" id="deleteToppingModal" ng-click="deleteItem(topping)"></i>
@@ -109,7 +109,7 @@
                 </md-card-actions>
             </md-card>
         </div>
-        <div class="well col-md-1 rightAddButton"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
+        <div class="well col-md-1 rightAddButton" data-toggle="modal" data-target="#addTopping" id="addToppingModal"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></div>
 
         <div class="col-md-11">
 
@@ -126,7 +126,7 @@
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    <div class="edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" data-toggle="modal" data-target="#updateMeat" id="updateMeatModal" ng-click="updateItem(topping)"></i>
                         <md-tooltip md-direction="{{delete.tipDirection}}">Edit</md-tooltip>
                     </div>
                     <div class="delete"><i class="fa fa-trash fa-2x" aria-hidden="true" data-toggle="modal" data-target="#deleteMeat" id="deleteMeatModal" ng-click="deleteItem(topping)"></i>
@@ -268,3 +268,316 @@
     </div>
 </div>
 <!--End of Modal for deleting the meat toppings-->
+
+
+<!--Modal for adding size-->
+<div class="modal fade" id="addSize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Add Pizza Size</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="submitSize()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="addSizeForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="addSizeForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for adding the size-->
+
+<!--Modal for adding crust-->
+<div class="modal fade" id="addCrust" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Add Pizza Crust</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="submitCrust()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="addCrustForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="addCrustForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for adding the crust-->
+
+<!--Modal for adding cheese-->
+<div class="modal fade" id="addCheese" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Add Cheese</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="submitCheese()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="addCheeseForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="addCheeseForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for adding the cheese-->
+
+<!--Modal for adding topping-->
+<div class="modal fade" id="addTopping" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Add Toppings</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="submitTopping()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="addToppingForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Type</label>
+                        <select class="form-control"  ng-model="addToppingForm.value" required>
+                            <option value="veggie">Vegetables</option>
+                            <option value="meat">Meat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="addToppingForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for adding the topping-->
+
+<!--Modal for updating size-->
+<div class="modal fade" id="updateSize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Size</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="updateSize(updateForm._id)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="updateForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="updateForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for updating the size-->
+
+<!--Modal for updating crust-->
+<div class="modal fade" id="updateCrust" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Crust</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="updateCrust(updateForm._id)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="updateForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="updateForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for updating the crust-->
+
+<!--Modal for updating cheese-->
+<div class="modal fade" id="updateCheese" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Cheese</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="updateCheese(updateForm._id)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="updateForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="updateForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for updating the cheese-->
+
+<!--Modal for updating veggie-->
+<div class="modal fade" id="updateVeggie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Cheese</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="updateVeggie(updateForm._id)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="updateForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Type</label>
+                        <input type="text"  class="input-lg form-control" ng-model="updateForm.value" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="updateForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for updating the veggie-->
+
+<!--Modal for updating meat-->
+<div class="modal fade" id="updateMeat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Cheese</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+            <form  ng-submit="updateMeat(updateForm._id)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="required">Name</label>
+                        <input type="text"  class="input-lg form-control" ng-model="updateForm.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Type</label>
+                        <input type="text"  class="input-lg form-control" ng-model="updateForm.value" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Price</label>
+                        <input type="number"  class="input-lg form-control" min="0" ng-model="updateForm.price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End of modal for updating the meat-->

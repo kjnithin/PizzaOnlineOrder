@@ -1465,3 +1465,7 @@ md-card:active {
 .card:hover{
     cursor: pointer;
 }
+
+#bill{
+    position:fixed;
+}
