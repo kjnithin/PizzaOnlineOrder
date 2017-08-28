@@ -1,6 +1,6 @@
 app.service('connectHttp', ['$http', function ($http) {
-    var baseUrl = 'https://agile-hollows-91136.herokuapp.com';
-    // var baseUrl = 'http://localhost:3000';
+    // var baseUrl = 'https://agile-hollows-91136.herokuapp.com';
+    var baseUrl = 'http://localhost:4000';
 
     this.logoutHttp = function () {
         return $http.get(baseUrl + '/logout');
@@ -30,32 +30,32 @@ app.service('connectHttp', ['$http', function ($http) {
         return $http.post(baseUrl + '/auth', val);
     };
 
-    this.getCrust = function () {
-        return $http.get(baseUrl + '/crusts');
+    this.getCrust = function (val) {
+        return $http.get(baseUrl + '/getcrust/'+val);
     };
 
     this.deleteCrust = function (val) {
         return $http.delete(baseUrl + '/crusts/' + val);
     };
 
-    this.getCheese = function () {
-        return $http.get(baseUrl + '/cheeses');
+    this.getCheese = function (val) {
+        return $http.get(baseUrl + '/getcheese/'+val);
     };
 
     this.deleteCheese = function (val) {
         return $http.delete(baseUrl + '/cheeses/' + val);
     };
 
-    this.getSize = function () {
-        return $http.get(baseUrl + '/sizes');
+    this.getSize = function (val) {
+        return $http.get(baseUrl + '/getsize/'+val);
     };
 
     this.deleteSize = function (val) {
         return $http.delete(baseUrl + '/sizes/' + val);
     };
 
-    this.getTopping = function () {
-        return $http.get(baseUrl + '/toppings');
+    this.getTopping = function (val) {
+        return $http.get(baseUrl + '/gettopping/'+val);
     };
 
     this.deleteToppings = function (val) {
@@ -100,5 +100,13 @@ app.service('connectHttp', ['$http', function ($http) {
 
     this.putUser = function(id,val){
         return $http.put(baseUrl+'/users/'+id, val);
+    }
+
+    this.createStore = function(store){
+        return $http.post(baseUrl+'/createstore',store);
+    }
+
+    this.getStores = function(id){
+        return $http.get(baseUrl+'/getstore/'+id);
     }
 }]);

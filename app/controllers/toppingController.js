@@ -1,21 +1,9 @@
 var Topping = require('../models/topping');
 
-var getTopping = function(req,res) {
-  Topping.find(function(err, toppings) {
-        if(err)
-          res.send(err);
-
-        res.json(toppings);
-      });
-    };
-
 
 var postTopping = function(req,res) {
-          var topping = new Topping();
-          topping.name = req.body.name;
-          topping.value = req.body.value;
-          topping.price=req.body.price;
 
+          var topping = new Topping(req.body);
 
           topping.save(function(err,status) {
             if(err){
@@ -34,23 +22,63 @@ var postTopping = function(req,res) {
           });
         };
 
-var getidTopping= function(req,res) {
-  Topping.findById(req.params.topping_id, function(err, topping) {
-         if(err)
-           res.send(err);
+var getTopping = function(req,res) {
+  Topping.find(function(err, toppings) {
+        if(err){
+          res.status(400).send(err);
+        }
+        else if(toppings.length<=0){
+      res.status(400).send({
+        success:false,
+        message:'Toppings not found'
+      })
+    }
+    else{
+      res.status(200).send(toppings)
+    }
+      });
+    };
 
-         res.json(topping);
-       });
+var getidTopping= function(req,res) {
+
+  Topping.findById(req.params.topping_id, function(err, topping) {
+         if(err){
+           res.send(err);
+         }
+         else{
+          res.status(200).json(topping);
+         }
+      })
 };
 
+var getToppingsByStore = function(req,res){
+
+  Topping.find({store : req.params.store}, function(err,topping){
+    if(err){
+      res.status(400).send(err);
+    }
+    else if(topping.length<=0){
+      res.status(400).send({
+        success:false,
+        message:'Toppings not found'
+      })
+    }
+    else{
+      res.status(200).send(topping)
+    }
+  })
+}
+
 var putTopping = function(req,res) {
-Topping.findById(req.params.topping_id, function(err, topping) {
+ console.log(req.body.store);
+  Topping.findById(req.params.topping_id, function(err, topping) {
           if(err)
-            res.send(err);
+              res.send(err);
 
             topping.name = req.body.name;
             topping.value = req.body.value;
             topping.price=req.body.price;
+            topping.store = req.body.store;
 
             topping.save(function(err) {
             if(err){
@@ -61,7 +89,7 @@ Topping.findById(req.params.topping_id, function(err, topping) {
               });
             }
             else{
-              res.status(200).json({
+              res.status(200).send({
                 success:true,
                 message:'Toppings updated'
               });
@@ -75,10 +103,13 @@ var deleteTopping = function(req,res) {
     Topping.remove({
          _id: req.params.topping_id
        }, function(err, topping) {
-         if(err)
+         if(err){
            res.send(err);
+         }
+         else{
+          res.status(200).send({message: 'Toppings Deleted'});
+         }
 
-         res.json({message: 'Toppings Deleted'});
        });
 };
 
@@ -88,5 +119,6 @@ module.exports = {
   putTopping : putTopping,
   getTopping : getTopping,
   postTopping : postTopping,
-  getidTopping : getidTopping
+  getidTopping : getidTopping,
+  getToppingsByStore : getToppingsByStore
 };

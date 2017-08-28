@@ -13,11 +13,7 @@ var getSize = function(req,res) {
 
 
 var postSize = function(req,res) {
-          var size = new Size();
-          size.name = req.body.name;
-          size.price=req.body.price;
-
-
+          var size = new Size(req.body);
           size.save(function(err,status) {
             if(err){
               res.status(400).json({
@@ -37,11 +33,29 @@ var postSize = function(req,res) {
 
 var getidSize = function(req,res) {
   Size.findById(req.params.size_id, function(err, size) {
-         if(err)
+         if(err){
            res.send(err);
-
-         res.json(size);
+         }
+         else{
+           res.json(size);
+         }
        });
+};
+
+var getSizeByStore = function(req,res){
+  Size.find({store:req.params.store}, function(err,size){
+    if(err){
+      res.status(400).send(err);
+    }
+    else if(size.length<=0){
+      res.status(400).send({
+        success:false,
+        message:'size not found'
+      })
+    }else{
+      res.status(200).json(size);
+    }
+  })
 };
 
 var putSize = function(req,res) {
@@ -87,5 +101,6 @@ module.exports = {
   getSize : getSize,
   getidSize : getidSize,
   postSize : postSize,
-  putSize :putSize
+  putSize :putSize,
+  getSizeByStore : getSizeByStore
 };

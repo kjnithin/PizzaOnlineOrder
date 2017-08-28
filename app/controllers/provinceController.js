@@ -12,10 +12,7 @@ var getProvince = function(req,res) {
     };
 
 var postProvince = function(req,res) {
-              var province = new Province();
-              province.name = req.body.name;
-              province.tax=req.body.tax;
-
+              var province = new Province(req.body);
               province.save(function(err,status) {
                 if(err){
                   res.status(400).json({

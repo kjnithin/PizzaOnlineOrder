@@ -1,81 +1,78 @@
-<div class="col-md-9 well">
+<div class="col-md-9 col-sm-9 well">
 
-    <div class="col-md-12 well">
+    <h3 class="text-center">Make your Pizza</h3>
+
+    <div class="col-md-12 col-sm-12 well">
     <h3>Size</h3>
-
-    <md-card ng-repeat="size in sizeData | orderBy:'name'" class="col-md-5 card" ng-click="chooseSize(size)">
+        <md-card ng-repeat="size in sizeData | orderBy:'name'" class="col-md-5 col-sm-5  card" ng-click="chooseSize(size)">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline"><strong>{{size.name | firstCapital}}</strong></span>
                 <span class="md-subhead"></span>
             </md-card-title-text>
-            <md-card-title-media>
-                <div class="md-media-lg card-media"><img ng-src="{{size.image}}"></div>
-            </md-card-title-media>
-        </md-card-title >
-
-    </md-card>
+             <md-card-title-media>
+                <div class="md-media-lg card-media"><img class="md-card-image" ng-src="{{size.image}}" alt="Size"/></div>
+             </md-card-title-media>
+       </md-card-title >
+       </md-card>
     </div>
 
-    <div class="col-md-12 well">
+    <div class="col-md-12  col-sm-12 well">
     <h3>Crust</h3>
-    <md-card ng-repeat="crust in crustValue |  orderBy:'name'" class="col-md-5 card" ng-click="chooseCrust(crust)">
+    <md-card ng-repeat="crust in crustValue |  orderBy:'name'" class="col-md-5 col-sm-5 card" ng-click="chooseCrust(crust)">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline"><strong>{{crust.name | firstCapital}}</strong></span>
                 <span class="md-subhead"></span>
             </md-card-title-text>
             <md-card-title-media>
-                <div class="md-media-lg card-media"><img ng-src="{{crust.image}}"></div>
+                <div class="md-media-lg card-media"><img class="img-responsive" ng-src="{{crust.image}}" alt="crust"></div>
             </md-card-title-media>
         </md-card-title>
     </md-card>
     </div>
 
-
-    <div class="col-md-12 well">
+    <div class="col-md-12 col-sm-12 well">
     <h3>Cheese</h3>
-    <md-card ng-repeat="cheese in cheeseValue |  orderBy:'name'" class="col-md-5 card" ng-click="chooseCheese(cheese)">
+    <md-card ng-repeat="cheese in cheeseValue |  orderBy:'name'" class="col-md-5 col-sm-5 card" ng-click="chooseCheese(cheese)">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline"><strong>{{cheese.name | firstCapital}}</strong></span>
                 <span class="md-subhead"></span>
             </md-card-title-text>
             <md-card-title-media>
-                <div class="md-media-lg card-media"><img ng-src="{{cheese.image}}"></div>
+                <div class="md-media-lg card-media"><img class="img-responsive" ng-src="{{cheese.image}}" alt="cheese"></div>
             </md-card-title-media>
         </md-card-title>
     </md-card>
     </div>
 
-
-
-    <div class="col-md-12 well">
+    <div class="col-md-12 col-sm-12 well">
     <h3>Toppings</h3>
     <h4 class="subhead">Veggies</h4>
-    <md-card ng-repeat="topping in toppingData | filter: 'veggie' | orderBy:'name'" class="col-md-5 card" ng-click="chooseVeggie(topping)">
+    <md-card ng-repeat="topping in toppingData | filter: 'veggie' | orderBy:'name'" class="col-md-5 col-sm-5 card" ng-click="chooseVeggie(topping)">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline"><strong>{{topping.name | firstCapital}}</strong></span>
                 <span class="md-subhead"></span>
             </md-card-title-text>
             <md-card-title-media>
-                <div class="md-media-lg card-media"><img ng-src="{{topping.image}}"></div>
+                <div class="md-media-lg card-media"><img class="img-responsive" ng-src="{{topping.image}}" alt="veggie"></div>
             </md-card-title-media>
         </md-card-title>
     </md-card>
     </div>
 
-    <div class="col-md-12 well">
+    <div class="col-md-12 col-sm-12 well">
     <h4 class="subhead">Meat</h4>
-    <md-card ng-repeat="topping in toppingData | filter: 'meat' | orderBy:'name'" class="col-md-5 card" ng-click="chooseMeat(topping)">
+    <md-card ng-repeat="topping in toppingData | filter: 'meat' | orderBy:'name'" class="col-md-5 col-sm-5 card" ng-click="chooseMeat(topping)">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline"><strong>{{topping.name | firstCapital}}</strong></span>
                 <span class="md-subhead"></span>
             </md-card-title-text>
             <md-card-title-media>
-                <div class="md-media-lg card-media"><img ng-src="{{topping.image}}"></div>
+                <div class="md-media-lg card-media"><img class="img-responsive" ng-src="{{topping.image}}" alt="meat"></div>
             </md-card-title-media>
         </md-card-title>
     </md-card>

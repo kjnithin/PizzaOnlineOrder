@@ -11,19 +11,7 @@ var getUser = function(req,res) {
 
 
 var postUser = function(req,res) {
-          var user = new User();
-          user.name = req.body.name;
-          user.userName=req.body.userName;
-          user.email=req.body.email;
-          user.password=req.body.password;
-          user.apt=req.body.apt;
-          user.street=req.body.street;
-          user.city=req.body.city;
-          user.province=req.body.province;
-          user.postal=req.body.postal;
-          user.phone=req.body.phone;
-          user.role='user';
-
+          var user = new User(req.body);
 
           req.checkBody("name","Name is required").notEmpty();
           req.checkBody("userName","User name is required").notEmpty();
@@ -35,6 +23,7 @@ var postUser = function(req,res) {
           req.checkBody("province","Province is reequired").notEmpty();
           req.checkBody("postal","Postal code is required").notEmpty();
           req.checkBody("phone","Phone number is required").notEmpty();
+          req.checkBody("role","Role number is required").notEmpty();
 
           var error = req.validationErrors();
           if (error) {
@@ -76,6 +65,7 @@ var putUser = function(req,res) {
             user.province=req.body.province;
             user.postal=req.body.postal;
             user.phone=req.body.phone;
+            user.role = req.body.role;
 
 
             req.checkBody("name","Name is required").notEmpty();
@@ -88,6 +78,7 @@ var putUser = function(req,res) {
             req.checkBody("province","Province is reequired").notEmpty();
             req.checkBody("postal","Postal code is required").notEmpty();
             req.checkBody("phone","Phone number is required").isMobilePhone('en-US');
+            req.checkBody('role','Role is required').notEmpty();
 
 
             var errors = req.validationErrors();

@@ -5,8 +5,9 @@ app.controller('loginController', ['$scope', 'toastr', 'connectHttp', '$state', 
         connectHttp.loginHttp($scope.loginForm)
             .then(function (response) {
                 $localStorage.userdata = response.data.user;
-                if (response.data.user.role === "admin") {
-                    $state.go('admin.order');
+                if (response.data.user.role === "owner") {
+                    $localStorage.userId = response.data.user._id;
+                    $state.go('dashboard');
                 } else if (response.data.user.role === "user") {
                     $state.go('user.order');
                 } else {

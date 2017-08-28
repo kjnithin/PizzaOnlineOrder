@@ -1,0 +1,14 @@
+<div class="form-group" >
+<span class="control-label"> Do You want to Own the store?</span><br/>
+<label style="margin-right: 10%; ">
+Owner
+    <input type="radio"  name="role" ng-model="registerForm.role" value="owner" required>
+  </label>
+  <label>
+  Customer
+    <input type="radio" name="role" ng-model="registerForm.role" value="customer" required>
+  </label><br/>
+</div>
+<div class="form-group">
+    <button type="submit" id="regButton" ng-disabled="registerForm.$invalid" class="btn btn-primary col-md-12"><i class="fa fa-user-plus fa-lg"></i>Register</button>
+</div>

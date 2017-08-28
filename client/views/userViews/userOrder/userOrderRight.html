@@ -1,38 +1,55 @@
-<div class="col-md-3 " >
-    <h3 id="bill" >Your Order</h3>
-    <!--<h4 ng-if="size">Size</h4>-->
-    <!--<strong>{{sizeName}} {{sizePrice}}</strong>-->
-    <!--<h4 ng-if="crust">Crust</h4>-->
-    <!--<strong>{{crustName}} {{crustPrice}}</strong>-->
-    <!--<h4 ng-if="cheese">Cheese</h4>-->
-    <!--<strong>{{cheeseName}} {{cheesePrice}}</strong>-->
-    <!--<h4>Toppings</h4>-->
-    <!--<h4 ng-if="veggie">Veggie</h4>-->
-    <!--<table>-->
-        <!--<tr ng-repeat = "veggie in veggieObject">-->
-            <!--<td>{{ veggie.name }}</td>-->
-            <!--<td>{{ veggie.price }}</td>-->
-        <!--</tr>-->
-    <!--</table>-->
-    <!--<h4 ng-if="meat">Meat</h4>-->
-    <!--<table>-->
-        <!--<tr ng-repeat = "meat in meatObject">-->
-            <!--<td>{{ meat.name }}</td>-->
-            <!--<td>{{ meat.price }}</td>-->
-        <!--</tr>-->
-    <!--</table>-->
-    <!--<form>-->
-        <!--<div class="form-group row">-->
-            <!--<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>-->
-            <!--<div class="col-sm-10">-->
-                <!--<input type="text" class="form-control" id="inputEmail3" ng-bind="sizeName">-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group row">-->
-            <!--<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>-->
-            <!--<div class="col-sm-10">-->
-                <!--<input type="password" class="form-control" id="inputPassword3" placeholder="Password">-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</form>-->
+<div class="col-md-3 col-sm-3 " >
+<div class="row">
+    <div id="bill">
+    <h3 class="billHeading">Your Order</h3>
+        <form class="form-horizontal" ng-submit="postBill()">
+            <div class="form-group">
+                <label class="control-label col-sm-5 pull-left">{{billObject.sizeName}}</label>
+                <div class="col-sm-offset-2 col-sm-4">
+                    <input type="text" class="form-control billForm" ng-model="billObject.sizePrice">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-5" >{{billObject.crustName}}</label>
+                <div  class="col-sm-offset-2 col-sm-4">
+                    <input type="text" class="form-control billForm" ng-model="billObject.crustPrice "  >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-5" >{{cheese.name}}</label>
+                <div  class="col-sm-offset-2 col-sm-4">
+                    <input type="text" class="form-control billForm" ng-model="cheese.price "  >
+                </div>
+            </div>
+
+            <ul ng-repeat="veggie in veggieList">
+                <li>
+                    <div class="form-group">
+                        <label class="control-label col-sm-5" >{{veggie.name}}</label>
+                        <div  class="col-sm-offset-2 col-sm-4">
+                            <input type="text" class="form-control billForm" ng-model="veggie.price"  >
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <ul ng-repeat="meat in meatList">
+                <li>
+                    <div class="form-group">
+                        <label class="control-label col-sm-5" >{{meat.name}}</label>
+                        <div  class="col-sm-offset-2 col-sm-4">
+                            <input type="text" class="form-control billForm" ng-model="meat.price | currency"  >
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Checkout</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
 </div>

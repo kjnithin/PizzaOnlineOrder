@@ -90,6 +90,45 @@ app.controller("userController", ['$scope', '$localStorage', 'connectHttp','$sta
            })
     };
 
+    $scope.billObject = [];
+
+    $scope.chooseSize = function(val){
+        $scope.billObject.push(val);
+
+    };
+
+    $scope.chooseCrust = function(val){
+        $scope.billObject = {"crustName":val.name,"crustPrice":val.price};
+        console.log($scope.billObject);
+    };
+
+    $scope.chooseCheese = function(val){
+        $scope.cheese = val;
+    };
+
+    $scope.veggieList = [];
+    $scope.chooseVeggie = function(val){
+         if($scope.veggieList.length<=2){
+             $scope.veggieList.push(val) ;
+         }else{
+             console.log("exccesdded");
+         }
+    };
+
+    $scope.meatList = [];
+    $scope.chooseMeat = function(val){
+        if($scope.meatList.length<=2){
+            $scope.meatList.push(val);
+        }else{
+            console.log("exceded");
+        }
+    };
+
+    // $scope.billObject = {};
+    $scope.postBill = function(){
+        console.log("clicked");
+        console.log($scope.billObject);
+    }
 
 
 }]);

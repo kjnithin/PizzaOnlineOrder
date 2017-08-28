@@ -3,7 +3,8 @@ app.controller('registerController', ['$scope', '$location', 'toastr', 'connectH
 
     $scope.register = function() {
         connectHttp.registerHttp($scope.registerForm)
-            .then(function(response) {
+        .then(function(response) {
+                console.log(response);
                 $location.path('/Login');
                 toastr.success('Successfully Registered!!');
             }, function(response) {
@@ -16,7 +17,7 @@ app.controller('registerController', ['$scope', '$location', 'toastr', 'connectH
     connectHttp.provinceHttp()
         .then(function(response) {
             $scope.provinceName = response.data;
-        }, function errorCallback(response) {
+        }, function (response) {
             toastr.error('Invalid Credentials' + response.data.error);
         });
 

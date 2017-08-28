@@ -3,16 +3,16 @@
     <div style="margin-bottom: 1%">
         <ul class="nav nav-pills">
             <li ui-sref-active="active">
-                <a ui-sref='.order'><span class='tab-header'><i class='fa fa-cutlery'></i> Orders</span></a>
+                <a ui-sref='.order({storeId :storeId})'><span class='tab-header'><i class='fa fa-cutlery'></i> Orders</span></a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref='.inventory'><span class='tab-header'><i class='fa fa-info'></i> Inventory</span></a>
+                <a ui-sref='.inventory({storeId :storeId})'><span class='tab-header'><i class='fa fa-info'></i> Inventory</span></a>
             </li>
             <li role="presentation" ui-sref-active="active">
-                <a ui-sref='.user'><span class='tab-header'><i class='fa fa-group'></i> User Data</span></a>
+                <a ui-sref='.user({storeId :storeId})'><span class='tab-header'><i class='fa fa-group'></i> User Data</span></a>
             </li>
             <li role="presentation" ui-sref-active="active">
-                <a ui-sref='.personal'><span class='tab-header'><i class='fa fa-user-secret'></i> Admin Data</span></a>
+                <a ui-sref='.personal({storeId :storeId})'><span class='tab-header'><i class='fa fa-user-secret'></i> Admin Data</span></a>
             </li>
         </ul>
     </div>

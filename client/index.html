@@ -24,6 +24,9 @@
             <script src="./src/js/controllers/userController.js"></script>
             <script src="./src/js/controllers/adminController.js"></script>
             <script src="./src/js/controllers/logoutController.js"></script>
+            <script src="./src/js/controllers/storeController.js"></script>
+            <script src="./src/js/controllers/dashboardController.js"></script>
+            <script src="./src/js/controllers/createItemController.js"></script>
             <script src="./src/js/controllers/displayController.js"></script>
             <!--endbuild-->
 
@@ -41,22 +44,20 @@
             <title>Conestoga Pizzeria</title>
 
         </head>
+
         <body>
           <div class="container-fluid">
             <nav class="navbar navbar-default navbar-fixed-top">
               <div class="container-fluid">
                 <div class="navbar-header">
                   <text class='navbar-header-text'>CONESTOGA PIZZA</text>
-                </div>
-                <div ng-controller="displayController">
-                <p class="navbar-text" id="displayName"> </p>
-                </div>
-                <div class="collapse navbar-collapse" ng-controller="logoutController">
-                <ul class="nav navbar-nav navbar-right" >
-                  <li ng-hide="state.$current.hideLogoutIcon"><a ng-click="logout()"><i class="fa fa-sign-in fa-fw fa-2x"></i></a></li>
+                  </div>
+                <div  ng-controller="logoutController">
+                <ul class="nav navbar-right" >
+                  <li ng-hide="state.$current.hideLogoutIcon"><a ng-click="logout()"><i class="fa fa-sign-out fa-fw fa-2x logout"></i></a></li>
                 </ul>
               </div>
-            </div>
+             </div>
             </nav>
           </div>
           <!-- end -->
@@ -66,7 +67,7 @@
         </div>
          <!-- Its footer -->
          <div class="container-fluid" id="footer">
-         <nav class="navbar navbar-default navbar-fixed-bottom">
+         <nav class="navbar navbar-default navbar-fixed-bottom ">
            <div class="container">
              <div class="navbar-header" id="copyright">
                <p><i class="fa fa-copyright" aria-hidden="true"></i> CP</P>

@@ -13,11 +13,7 @@ var getCrust = function(req,res) {
 
 
 var postCrust = function(req,res) {
-          var crust = new Crust();
-          crust.name = req.body.name;
-          crust.price=req.body.price;
-
-
+          var crust = new Crust(req.body);
           crust.save(function(err,status) {
             if(err){
               res.status(400).json({
@@ -43,6 +39,22 @@ var getidCrust= function(req,res) {
          res.json(crust);
        });
 };
+
+var getCrustByStore = function(req,res){
+
+  Crust.find({store:req.params.store}, function(err,crust){
+    if(err){
+      res.status(400).send(err);
+    }else if(crust.length<=0){
+      res.status(200).json({
+        success:true,
+        message: 'crust not found'
+      })
+    }else{
+      res.status(200).json(crust);
+    }
+  })
+}
 
 var putCrust = function(req,res) {
 Crust.findById(req.params.crust_id, function(err, crust) {
@@ -87,5 +99,6 @@ module.exports = {
   putCrust:putCrust,
   getidCrust : getidCrust,
   getCrust : getCrust,
-  postCrust : postCrust
+  postCrust : postCrust,
+  getCrustByStore : getCrustByStore
 };

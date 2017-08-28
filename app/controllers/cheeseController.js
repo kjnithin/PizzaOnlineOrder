@@ -13,11 +13,7 @@ var getCheese = function(req,res) {
 
 
 var postCheese = function(req,res) {
-          var cheese = new Cheese();
-          cheese.name = req.body.name;
-          cheese.price=req.body.price;
-
-
+          var cheese = new Cheese(req.body);
           cheese.save(function(err,status) {
             if(err){
               res.status(400).json({
@@ -44,6 +40,22 @@ var getidCheese= function(req,res) {
        });
 };
 
+var getCheeseByStore = function(req,res){
+
+  Cheese.find({store:req.params.store}, function(err,cheese){
+    if(err){
+      res.status(400).send(err);
+    }else if(cheese.length<= 0){
+      res.status(400).json({
+            success: false,
+            message: "cheese not found"
+           });
+    }
+    else{
+      res.status(200).json(cheese);
+    }
+  })
+}
 var putCheese = function(req,res) {
 Cheese.findById(req.params.cheese_id, function(err, cheese) {
           if(err)
@@ -87,5 +99,6 @@ module.exports = {
   putCheese : putCheese,
   getCheese : getCheese,
   getidCheese : getidCheese,
-  postCheese : postCheese
+  postCheese : postCheese,
+  getCheeseByStore : getCheeseByStore
 };

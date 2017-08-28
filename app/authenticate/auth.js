@@ -1,5 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var express = require('express');
+var router = express.Router();
 var User = require('../models/user');
 
 
@@ -31,6 +33,7 @@ passport.use(new LocalStrategy({
    });
  });
 
+
 var authUser = function(req,res){
   User.findOne({'email': req.body.email} , function(err,data){
     if(err){
@@ -40,7 +43,55 @@ var authUser = function(req,res){
     }
   });
 };
+
+var login = function(req,res,next){
+  passport.authenticate('local',
+    function(err,user,info) {
+      if(err) {
+        res.json(err);
+        return;
+      }
+
+      if(!user){
+        return res.status(401).send({
+          message:'Error'
+        });
+      }
+
+      req.login(user,function(err){
+        if(err){
+          return next(err);
+        }
+
+        res.status(200).send({
+          user:user
+        });
+      })
+  })(req,res,next);
+};
+
+var isLoggedIn = function(req,res,next){
+  if(!req.isAuthenticated()){
+   res.status(401).send({
+    message : 'Please Login'
+   })
+  }
+   next();
+}
+
+var logout =  function(req, res){
+      req.logout();
+      res.status(200).json({
+          success: true,
+          message: 'Log out successfully!!!!'
+      });
+    };
+
+
 module.exports= {
   passport : passport,
-  authUser : authUser
+  authUser : authUser,
+  login : login,
+  logout : logout,
+  isLoggedIn : isLoggedIn
 };

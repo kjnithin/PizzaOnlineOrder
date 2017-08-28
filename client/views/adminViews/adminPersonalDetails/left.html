@@ -1,15 +1,15 @@
-<div class="col-md-6">
+<div class="col-md-6 col-sm-6 col-xs-12">
 
   <md-card ng-repeat="n in personal | orderBy:'name'">
     <md-card-title>
            <md-card-title-text>
              <span class="md-headline"><span ng-bind="n.name | firstCapital"></span></span>
              <span class="md-subhead"><span ng-bind="n.email"></span> </span>
-
-            <span class="md-subhead"> <strong>Phone</strong></span>
+             <span class="md-subhead"> <strong>Phone</strong></span>
              <span><span ng-bind="n.phone"></span></span>
            </md-card-title-text>
          </md-card-title>
       </md-card>
   </div>
+
 </div>

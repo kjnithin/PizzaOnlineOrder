@@ -2,7 +2,7 @@
     <strong>There are no users in the system !!!</strong></div>
 
 <div class='row'>
-    <md-card ng-repeat="user in userValue | orderBy : 'name'" class="col-md-5">
+    <md-card ng-repeat="user in userValue | orderBy : 'name'" class="col-md-5 col-sm-5 col-xs-12">
         <md-card-title>
             <div>
                 <p><span class="md-subhead bolder"><span ng-bind="user.name | firstCapital"></span></span></p>
@@ -15,7 +15,7 @@
                     <div><span ng-bind="user.postal | capitalize"></span></div>
                 </div>
             </div>
-            <div style="padding-left:40%">
+            <div class="fab">
                 <md-button class="md-fab md-default md-hue-2" aria-label="Profile" data-toggle="modal" data-target="#adminUserDel" id="adminModal" ng-click="openModal(user)">
                     <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                     <md-tooltip md-direction="{{delete.tipDirection}}">Delete</md-tooltip>
