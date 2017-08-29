@@ -9,7 +9,7 @@ var app = angular.module('pizzaOrder', [
 
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/Dashboard');
+    $urlRouterProvider.otherwise('/Login');
 
     $stateProvider
 

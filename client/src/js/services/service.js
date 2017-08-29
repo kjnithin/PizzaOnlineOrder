@@ -1,5 +1,5 @@
 app.service('connectHttp', ['$http', function ($http) {
-    var baseUrl = 'https://agile-hollows-91136.herokuapp.com';
+    var baseUrl = 'http://ec2-34-233-152-20.compute-1.amazonaws.com:4000';
     // var baseUrl = 'http://localhost:4000';
 
     this.logoutHttp = function () {
