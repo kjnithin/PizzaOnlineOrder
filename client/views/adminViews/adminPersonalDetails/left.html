@@ -1,15 +1,30 @@
-<div class="col-md-6 col-sm-6 col-xs-12">
+<div class="col-md-8 col-sm-8 col-xs-10 well form-horizontal">
+  <p class="tab-header leader">Personal Details</p>
 
-  <md-card ng-repeat="n in personal | orderBy:'name'">
-    <md-card-title>
-           <md-card-title-text>
-             <span class="md-headline"><span ng-bind="n.name | firstCapital"></span></span>
-             <span class="md-subhead"><span ng-bind="n.email"></span> </span>
-             <span class="md-subhead"> <strong>Phone</strong></span>
-             <span><span ng-bind="n.phone"></span></span>
-           </md-card-title-text>
-         </md-card-title>
-      </md-card>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails lead">Name:</label>
+      <div class="col-md-8 showPersonalDetails"><span ng-bind="adminDetails.name | firstCapital"></span></div>
   </div>
-
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails lead">User Name:</label>
+      <div class="col-md-8 showPersonalDetails"><span ng-bind="adminDetails.userName"></span></div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails lead">Email:</label>
+      <div class="col-md-8" class="showPersonalDetails"><span ng-bind="adminDetails.email"></span></div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails lead">Address:</label>
+      <div class="col-md-8 showPersonalDetails">
+      <div><span ng-bind="adminDetails.apt"></span></div>
+      <div><span ng-bind="adminDetails.street | firstCapital"></span></div>
+      <div><span ng-bind="adminDetails.city | firstCapital"></span>, <span ng-bind="adminDetails.province | firstCapital"></span></div>
+      <div><span ng-bind="adminDetails.postal | capitalize"></span></div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-md-4 labelPersonalDetails lead">Phone:</label>
+      <div class="col-md-8 showPersonalDetails"><span ng-bind="adminDetails.phone"></span></div>
+  </div>
+  </div>
 </div>

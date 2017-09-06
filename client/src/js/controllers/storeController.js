@@ -2,6 +2,11 @@ app.controller("storeController", ['$scope', 'connectHttp', '$localStorage','toa
 
   var id = $localStorage.userId;
 
+  if(!$localStorage.userId){
+    $state.go('login');
+    toastr.info('Please Login');
+  }
+
  $scope.storeForm={};
 
  $scope.createStore = function(){
@@ -10,6 +15,7 @@ app.controller("storeController", ['$scope', 'connectHttp', '$localStorage','toa
         name: $scope.storeForm.name,
         description: $scope.storeForm.description,
         address: $scope.storeForm.address,
+        image: 'https://s3.amazonaws.com/uplaods/store.jpg',
         owner : id
     }
 

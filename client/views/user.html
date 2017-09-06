@@ -3,13 +3,13 @@
     <!--Defining Tabs-->
     <ul class="nav nav-pills ">
         <li ui-sref-active="active">
-            <a ui-sref=".order"><span class='tab-header'><i class='fa fa-cutlery'></i> Order Pizza</span></a>
+            <a ui-sref=".order({storeName:storeName , storeId :storeId})"><span class='tab-header'><i class='fa fa-cutlery'></i> Order Pizza</span></a>
         </li>
         <li ui-sref-active="active">
-            <a ui-sref=".details"><span class='tab-header'><i class='fa fa-info'></i> Personal Data</span></a>
+            <a ui-sref=".details({storeName :storeName,storeId :storeId, userId : userId})"><span class='tab-header'><i class='fa fa-info'></i> Personal Data</span></a>
         </li>
         <li ui-sref-active="active">
-            <a ui-sref=".history"><span class='tab-header'><i class='fa fa-history'></i> History</span></a>
+            <a ui-sref=".history({storeName : storeName, storeId :storeId, userId:userId })"><span class='tab-header'><i class='fa fa-history'></i> History</span></a>
         </li>
     </ul>
  </div>

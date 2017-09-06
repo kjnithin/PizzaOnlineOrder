@@ -1,1 +1,77 @@
-<div>user history</div>
+<div>
+  <div class="alert alert-danger" role="alert" ng-if='showMessage'><h4><i class="fa fa-smile-o fa-lg" aria-hidden="true"></i> There are no previous orders</h4></div>
+
+  <md-card ng-repeat="order in orderData | orderBy : '-created'">
+    <md-card-header>
+      <md-card-title>
+        <md-card-header-title>
+           <span class = "md-headline bolder"> {{order.size.name}} Pizza</span>
+      </md-card-header-title>
+      </md-card-title>
+
+      <md-card-title>
+            <md-card-title-text>
+               <div class = "md-subhead bold text-right">Ordered : {{order.created | date : 'medium'}} </div>
+            </md-card-title-text>
+         </md-card-title>
+    </md-card-header>
+    <md-card-content>
+
+    <div class='row'>
+      <div class="orderModal col-md-7">
+        <h3>Items</h3>
+        <hr/>
+        <div class="row">
+          <div class='itemHeading bolder'>Size</div>
+          <span class='col-md-offset-1 col-md-6 bold'>{{order.size.name}}</span>
+          <span class='col-md-5'>{{order.size.price | currency}}</span>
+        </div>
+
+        <div class='row'>
+          <div class='itemHeading bolder'>Crust</div>
+          <span class=' col-md-offset-1 col-md-6 bold'>{{order.crust.name}}</span>
+          <span class='col-md-5'>{{order.crust.price | currency}}</span>
+        </div>
+
+        <div class='row'>
+          <div class='itemHeading bolder'>Cheese</div>
+          <span class='col-md-offset-1 col-md-6 bold'>{{order.cheese.name}}</span>
+          <span class='col-md-5'>{{order.cheese.price | currency}}</span>
+        </div>
+
+        <div class=' bolder itemHeading'>Veggie</div>
+        <ul ng-repeat="veggie in order.veggie track by $index">
+          <li class='row'>
+            <label class='col-md-offset-1 col-md-6 bold' >{{veggie.name}}</label>
+            <span class='col-md-5'>{{veggie.price | currency}}</span>
+          </li>
+        </ul>
+
+        <div class=' bolder itemHeading'>Meat</div>
+        <ul ng-repeat="meat in order.meat track by $index">
+          <li class='row'>
+            <span class='col-md-offset-1 col-md-6 bold'>{{meat.name}}</span>
+            <span class='col-md-5'>{{meat.price | currency}}</span>
+          </li>
+        </ul>
+
+        <hr/>
+        <div class='row'>
+          <span class='col-md-offset-1 col-md-6 bold'>Total</span>
+          <span class='col-md-5'>{{order.total.price | currency}}</span>
+        </div>
+      </div>
+      <div class='col-md-5 orderModal'>
+        <h4>Address</h4>
+        <hr/>
+        <div class='bold'>{{userDetails.name}}</div>
+        <div class='bold'>{{userDetails.apt}}</div>
+        <div class='bold'>{{userDetails.street}}, {{userDetails.city}}</div>
+        <div class='bold'>{{userDetails.province}}, {{userDetails.postal}}</div>
+        <div class='bold'><span> Ph: </span>{{userDetails.phone}}</div>
+      </div>
+    </div>
+
+  </md-card-content>
+</md-card>
+</div>

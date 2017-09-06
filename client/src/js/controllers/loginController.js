@@ -5,11 +5,11 @@ app.controller('loginController', ['$scope', 'toastr', 'connectHttp', '$state', 
         connectHttp.loginHttp($scope.loginForm)
             .then(function (response) {
                 $localStorage.userdata = response.data.user;
+                $localStorage.userId = response.data.user._id;
                 if (response.data.user.role === "owner") {
-                    $localStorage.userId = response.data.user._id;
-                    $state.go('dashboard');
+                    $state.go('dashboard.admin',{userId : response.data.user._id});
                 } else if (response.data.user.role === "user") {
-                    $state.go('user.order');
+                    $state.go('dashboard.user',{userId : response.data.user._id});
                 } else {
                     $state.go('');
                 }

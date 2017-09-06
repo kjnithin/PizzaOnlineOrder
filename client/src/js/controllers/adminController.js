@@ -1,6 +1,13 @@
-app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localStorage', '$stateParams', function($scope, connectHttp, toastr, $localStorage, $stateParams) {
+app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localStorage', '$stateParams','$state', function($scope, connectHttp, toastr, $localStorage, $stateParams,$state) {
+
+  if(!$localStorage.userId){
+    $state.go('login');
+    toastr.info('Please Login to continue');
+  }
 
   $scope.storeId = $stateParams.storeId;
+  $scope.userId = $localStorage.userId;
+  $scope.name = $localStorage.name;
 
   connectHttp.getAllUser()
     .then(function(response) {
@@ -406,4 +413,20 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
         }
       })
   };
+
+
+  connectHttp.getOrders($stateParams.storeId)
+    .then(function(response){
+      if(response.data.length <= 0){
+        $scope.alertMessage = true;
+      }else if(response.data.length > 0){
+        $scope.orderObject = response.data;
+      }else{
+        $scope.alertMessage = true;
+      }
+    },function(response){
+      toastr.error('Something went wrong');
+    })
+
+
 }]);

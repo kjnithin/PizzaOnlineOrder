@@ -4,6 +4,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var validator = require('express-validator');
+var Promise = require("bluebird");
+Promise.promisifyAll(require("mongoose"));
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');

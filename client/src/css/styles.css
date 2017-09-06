@@ -119,7 +119,12 @@
 }
 
 .lead {
-    font-weight: 800;
+    font-weight: 700;
+    color: #555;
+}
+
+.leader {
+    font-weight: 1000;
     color: #555;
 }
 
@@ -1414,10 +1419,48 @@ md-card:active {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    width:30px !important;
+}
+
+.orderItems{
+  min-height: 300px !important;
+}
+
+.itemHeading{
+  background-color:#ffe990;
+}
+
+.orderModal{
+  border: 2px solid silver;
+  border-radius: 5px;
 }
 
 .billForm:focus{
     outline:none;
+}
+
+.loader {
+  border: 16px solid transparent;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  position: fixed;
+  margin-left: 40%;
+  margin-top: 10%;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  z-index: 2;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .fab{
@@ -1504,4 +1547,10 @@ md-card:active {
       border-radius: 4px;
       -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
       box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

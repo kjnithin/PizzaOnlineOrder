@@ -1,5 +1,6 @@
 var Store = require('../models/store');
 
+
 var createStore = function(req,res){
 
     var store = new Store(req.body);
@@ -13,14 +14,14 @@ var createStore = function(req,res){
 };
 
 var getStores = function(req,res){
-
-    Store.find(function(err,stores){
-        if(err){
+  Store.find()
+          .populate('owner')
+          .then(function(stores){
+            res.status(200).json(stores)
+          })
+          .catch(function(err){
             res.status(400).json(err);
-        }else{
-            res.status(200).json(stores);
-        }
-    });
+          })
 };
 
 var getStoreByName = function(req,res){
@@ -43,21 +44,24 @@ var getStoreByName = function(req,res){
 
 var getStoreByOwner = function(req,res){
 
-    Store.find({owner:req.params.owner},function(err,store){
-        if(err){
-            res.status(400).json(err);
-        }
-        else if(!store){
-           res.status(400).json({
-            success: false,
-            message: "Store not found"
-           })
-        }
-        else{
-            res.status(200).json(store);
-        }
-    })
+    Store.find({owner:req.params.owner})
+         .populate('owner')
+         .then(function(store){
+           if(store.length<=0){
+             res.status(200).json({
+               success : false,
+               message : 'Store not found'
+             })
+           }
+           else {
+             res.status(200).json(store);
+           }
+         })
+         .catch(function(err){
+           res.status(400).json(err);
+         })
 };
+
 
 var deleteStore = function(req,res){
 

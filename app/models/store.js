@@ -21,6 +21,10 @@ var StoreSchema= new Schema({
     required:'Please provide the address',
     trim:true
   },
+  image:{
+    type:String,
+    trim:true
+  },
   owner:{
     type:mongoose.Schema.ObjectId,
     ref:'User',

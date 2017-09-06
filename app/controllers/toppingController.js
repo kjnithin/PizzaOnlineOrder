@@ -70,7 +70,6 @@ var getToppingsByStore = function(req,res){
 }
 
 var putTopping = function(req,res) {
- console.log(req.body.store);
   Topping.findById(req.params.topping_id, function(err, topping) {
           if(err)
               res.send(err);

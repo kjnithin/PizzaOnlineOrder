@@ -106,7 +106,23 @@ app.service('connectHttp', ['$http', function ($http) {
         return $http.post(baseUrl+'/createstore',store);
     }
 
-    this.getStores = function(id){
+    this.getStoresByOwner = function(id){
         return $http.get(baseUrl+'/getstore/'+id);
+    }
+
+    this.getStores = function(){
+      return $http.get(baseUrl+'/stores');
+    }
+
+    this.postOrder = function(order){
+      return $http.post(baseUrl+'/createOrder',order);
+    }
+
+    this.getMyorders = function(store,user){
+      return $http.get(baseUrl+'/getOrderByStoreUser/'+store+'/'+user);
+    }
+
+    this.getOrders = function(store){
+      return $http.get(baseUrl+'/getOrderByStore/'+store);
     }
 }]);

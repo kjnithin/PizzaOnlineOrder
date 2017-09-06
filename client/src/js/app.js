@@ -55,17 +55,30 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         })
 
         .state('dashboard',{
-            url:'/Dashboard',
+            url:'/Conestoga_Pizza/Dashboard',
+            abstrat:true,
             templateUrl:'views/dashboard.html'
         })
 
+        .state('dashboard.admin',{
+          url:'/Admin/:userId',
+          controller:'dashboardController',
+          templateUrl:'views/dashboardViews/adminDashboard.html'
+        })
+
+        .state('dashboard.user',{
+          url:'/User/:userId',
+          controller:'dashboardController',
+          templateUrl:'views/dashboardViews/userDashboard.html'
+        })
+
         .state('store',{
-            url:'/Store',
+            url:'/Conestoga_Pizza/Store',
             templateUrl:'views/store.html'
         })
 
         .state('items',{
-            url:'/:storeName/:storeId/Items',
+            url:'/:storeName/:storeId',
             abstrat:true,
             templateUrl:'views/createItem.html'
         })
@@ -95,7 +108,7 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         })
 
         .state('admin', {
-            url: '/Admin',
+            url: '/Conestoga_Pizza/Admin',
             abstract: true,
             templateUrl: 'views/admin.html',
         })
@@ -131,18 +144,18 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         })
 
         .state('user', {
-            url: '/User',
+            url: '/Conestoga_Pizza/User',
             abstract: true,
             templateUrl: 'views/user.html'
         })
 
         .state('user.history', {
-            url: '/History',
+            url: '/:storeName/History?:storeId&:userId',
             templateUrl: 'views/userViews/user_history.html'
         })
 
         .state('user.details', {
-            url: '/Details',
+            url: '/:storeName/Details?:storeId&:userId',
             views: {
                 '': {
                     templateUrl: 'views/userViews/user_details.html'
@@ -157,7 +170,7 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         })
 
         .state('user.order', {
-            url: '/Order',
+            url: '/:storeName/:storeId/Order',
             views: {
                 '': {
                     templateUrl: 'views/userViews/user_order.html'

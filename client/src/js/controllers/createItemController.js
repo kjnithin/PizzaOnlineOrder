@@ -3,6 +3,14 @@ app.controller("createItemController", ['$scope', 'connectHttp', '$localStorage'
   $scope.storeName = $stateParams.storeName;
   $scope.storeId = $stateParams.storeId;
 
+  if(!($localStorage.userId && $stateParams.storeId)){
+    $state.go('login');
+    toastr.info('Please login');
+  }
+
+
+
+
   $scope.crustForm = {};
 
   $scope.createCrust = function() {
@@ -101,6 +109,10 @@ app.controller("createItemController", ['$scope', 'connectHttp', '$localStorage'
       }, function(response) {
         toastr.error('Something went wrong');
       })
+  };
+
+  $scope.goToDashboard = function(){
+    $state.go('dashboard.admin',({userId : $localStorage.userId}))
   }
 
 

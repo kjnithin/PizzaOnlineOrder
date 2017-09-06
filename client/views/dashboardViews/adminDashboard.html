@@ -1,0 +1,18 @@
+<div class='col-md-11'>
+  <md-card ng-repeat="store in storeData">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline"><strong>{{store.name}}</strong></span>
+                        <span class="md-subhead"><strong>{{store.description}}</strong></span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <button type="button" class="btn btn-primary" ng-click="goToItems(store._id,store.name)"><i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> Store
+                        <md-tooltip md-direction="{{delete.tipDirection}}">Go To Store</md-tooltip>
+                    </button>
+                </md-card-actions>
+    </md-card>
+    </div>

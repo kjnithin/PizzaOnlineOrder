@@ -1,55 +1,143 @@
 <div class="col-md-3 col-sm-3 " >
-<div class="row">
+<!-- <div class="row"> -->
     <div id="bill">
-    <h3 class="billHeading">Your Order</h3>
-        <form class="form-horizontal" ng-submit="postBill()">
-            <div class="form-group">
-                <label class="control-label col-sm-5 pull-left">{{billObject.sizeName}}</label>
-                <div class="col-sm-offset-2 col-sm-4">
-                    <input type="text" class="form-control billForm" ng-model="billObject.sizePrice">
-                </div>
+    <h3 class="billHeading text-center">Your Order</h3>
+        <form class="form-horizontal billform" ng-submit="postBill()">
+          <div class='orderItems'>
+            <div class='row'>
+              <div class=' bolder itemHeading' ng-if='sizeShow'>Size</div>
+                <label class='col-md-offset-1 col-md-6 bold'>{{size.name}}</label>
+                <span class='col-md-5' >{{size.price | currency}}</span>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-5" >{{billObject.crustName}}</label>
-                <div  class="col-sm-offset-2 col-sm-4">
-                    <input type="text" class="form-control billForm" ng-model="billObject.crustPrice "  >
-                </div>
+            <div class="row">
+              <div class=' bolder itemHeading' ng-if='crustShow'>Crust</div>
+                <label class='col-md-offset-1 col-md-6 bold'>{{crust.name}}</label>
+                <span class='col-md-5'>{{crust.price | currency}}</span>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-5" >{{cheese.name}}</label>
-                <div  class="col-sm-offset-2 col-sm-4">
-                    <input type="text" class="form-control billForm" ng-model="cheese.price "  >
-                </div>
+            <div class='row'>
+              <div class=' bolder itemHeading' ng-if='cheeseShow'>Cheese</div>
+                <label class='col-md-offset-1 col-md-6 bold'>{{cheese.name}}</label>
+                <span class='col-md-5'>{{cheese.price | currency}}</span>
             </div>
 
-            <ul ng-repeat="veggie in veggieList">
-                <li>
-                    <div class="form-group">
-                        <label class="control-label col-sm-5" >{{veggie.name}}</label>
-                        <div  class="col-sm-offset-2 col-sm-4">
-                            <input type="text" class="form-control billForm" ng-model="veggie.price"  >
-                        </div>
-                    </div>
+            <div class=' bolder itemHeading' ng-if='veggieShow'>Veggie</div>
+            <ul ng-repeat="veggie in veggieList track by $index">
+                <li class='row'>
+                  <label class='col-md-offset-1 col-md-6 bold' >{{veggie.name}}</label>
+                  <span class='col-md-5'>{{veggie.price | currency}}</span>
                 </li>
             </ul>
 
-            <ul ng-repeat="meat in meatList">
-                <li>
-                    <div class="form-group">
-                        <label class="control-label col-sm-5" >{{meat.name}}</label>
-                        <div  class="col-sm-offset-2 col-sm-4">
-                            <input type="text" class="form-control billForm" ng-model="meat.price | currency"  >
-                        </div>
-                    </div>
+            <div class=' bolder itemHeading' ng-if='meatShow'>Meat</div>
+            <ul ng-repeat="meat in meatList track by $index">
+                <li class='row'>
+                  <span class='col-md-offset-1 col-md-6 bold'>{{meat.name}}</span>
+                  <span class='col-md-5'>{{meat.price | currency}}</span>
                 </li>
             </ul>
-
+          </div>
+            <hr/>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Checkout</button>
+                <div class="text-center" >
+                    <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#orderBill" id="showOrderBill" ng-disabled='orderButton'>Procced</button>
                 </div>
             </div>
         </form>
         </div>
+    <!-- </div> -->
+</div>
+
+<!--Modal for bill order  -->
+<div class="modal fade" id="orderBill" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row">
+                <div class='col-xs-10 rm-padding'>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Order</h2>
+                </div>
+                <div class='col-xs-2 rm-padding'>
+                    <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
+                </div>
+            </div>
+                <form ng-submit="orderModel()">
+                <div class="modal-body">
+                  <div class='row'>
+                  <div class="orderModal col-md-7">
+                    <h3>Items</h3>
+                    <hr/>
+                    <div class="row">
+                    <div class='itemHeading bolder'>Size</div>
+                      <span class='col-md-offset-1 col-md-6 bold'>{{billObject.size.name}}</span>
+                      <span class='col-md-5'>{{billObject.size.price | currency}}</span>
+                    </div>
+
+                    <div class='row'>
+                      <div class='itemHeading bolder'>Crust</div>
+                      <span class=' col-md-offset-1 col-md-6 bold'>{{billObject.crust.name}}</span>
+                      <span class='col-md-5'>{{billObject.crust.price | currency}}</span>
+                    </div>
+
+                    <div class='row'>
+                      <div class='itemHeading bolder'>Cheese</div>
+                      <span class='col-md-offset-1 col-md-6 bold'>{{billObject.cheese.name}}</span>
+                      <span class='col-md-5'>{{billObject.cheese.price | currency}}</span>
+                    </div>
+
+                    <div class=' bolder itemHeading'>Veggie</div>
+                    <ul ng-repeat="veggie in billObject.veggie track by $index">
+                        <li class='row'>
+                          <label class='col-md-offset-1 col-md-6 bold' >{{veggie.name}}</label>
+                          <span class='col-md-5'>{{veggie.price | currency}}</span>
+                        </li>
+                    </ul>
+
+                    <div class=' bolder itemHeading'>Meat</div>
+                    <ul ng-repeat="meat in meatList track by $index">
+                        <li class='row'>
+                          <span class='col-md-offset-1 col-md-6 bold'>{{meat.name}}</span>
+                          <span class='col-md-5'>{{meat.price | currency}}</span>
+                        </li>
+                    </ul>
+
+                    <hr/>
+                    <div class='row'>
+                      <span class='col-md-offset-1 col-md-6 bold'>Total</span>
+                      <span class='col-md-5'>{{billObject.total.price | currency}}</span>
+                    </div>
+                  </div>
+                  <div class='col-md-5 orderModal'>
+                    <h4>Address</h4>
+                    <hr/>
+                    <div class='bold'>{{userDetails.name}}</div>
+                    <div class='bold'>{{userDetails.apt}}</div>
+                    <span class='bold'>{{userDetails.street}}, {{userDetails.city}}</span>
+                    <span class='bold'>{{userDetails.province}}, {{userDetails.postal}}</span>
+                    <div class='bold'><span> Ph: </span>{{userDetails.phone}}</div>
+                  </div>
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning pull-left btn-lg" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-success pull-right btn-lg">Order</button>
+                </div>
+              </form>
+        </div>
     </div>
 </div>
+<!--End of edit model-->
+
+<!-- Loader -->
+<div class="loader text-center" ng-hide='loading'></div>
+
+<!--Modal for success -->
+<div class="modal fade" id="successModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3>Congradulations !!! Your order will be delivered within 30 minutes <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i></h3>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end modal -->

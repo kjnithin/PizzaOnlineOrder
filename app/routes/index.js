@@ -9,6 +9,7 @@ var crustController = require('../controllers/crustController');
 var cheeseController = require('../controllers/cheeseController');
 var toppingController = require('../controllers/toppingController');
 var storeController = require('../controllers/storeController');
+var orderController = require('../controllers/orderController');
 var auth = require('../authenticate/auth');
 
 router.post('/login',auth.login);
@@ -59,7 +60,15 @@ router.get('/stores', storeController.getStores);
 router.post('/createstore', storeController.createStore);
 router.get('/store/:name', storeController.getStoreByName);
 router.get('/getstore/:owner', storeController.getStoreByOwner);
-router.delete('/deleteStore/:sotre_id', storeController.deleteStore);
+router.delete('/deleteStore/:store_id', storeController.deleteStore);
+
+router.post('/createOrder', orderController.createOrder);
+router.get('/orders', orderController.getOrders);
+router.get('/order/:order_id', orderController.getOrderById);
+router.get('/getOrder/:user', orderController.getOrderByUser);
+router.get('/getOrderByStore/:store', orderController.getOrderByStore);
+router.get('/getOrderByStoreUser/:storeId/:userId', orderController.getOrderByStoreUser);
+router.delete('/order/:order_id', orderController.deleteOrder);
 
 
 module.exports = router;
