@@ -39,14 +39,16 @@ app.controller('loginController', ['$scope', 'toastr', 'connectHttp', '$state', 
                     request.execute(function (res) {
                         $scope.email = res.emails[0].value;
                         $scope.auth = {email: $scope.email};
+                        console.log($scope.auth);
                         connectHttp.googleAuth($scope.auth)
                             .then(function (response) {
+                              console.log(response.data);
                                     $localStorage.userdata = response.data;
-                                    if (response.data.role === "admin") {
-                                        $state.go('admin.order');
+                                    if (response.data.role === "owner") {
+                                        $state.go('dashboard.admin',{userId : response.data._id});
                                     }
                                     else if (response.data.role === "user") {
-                                        $state.go('user.order');
+                                        $state.go('dashboard.user',{userId : response.data._id});
                                     }
                                     else {
                                         $state.go("");
