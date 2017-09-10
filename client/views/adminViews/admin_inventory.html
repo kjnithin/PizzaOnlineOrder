@@ -514,7 +514,7 @@
         <div class="modal-content">
             <div class="modal-header row">
                 <div class='col-xs-10 rm-padding'>
-                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Cheese</h2>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Veggie</h2>
                 </div>
                 <div class='col-xs-2 rm-padding'>
                     <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
@@ -528,7 +528,10 @@
                     </div>
                     <div class="form-group">
                         <label class="required">Type</label>
-                        <input type="text"  class="input-lg form-control" ng-model="updateForm.value" required>
+                        <select class="form-control"  ng-model="updateForm.value" required>
+                            <option value="veggie">Vegetables</option>
+                            <option value="meat">Meat</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label class="required">Price</label>
@@ -551,7 +554,7 @@
         <div class="modal-content">
             <div class="modal-header row">
                 <div class='col-xs-10 rm-padding'>
-                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Cheese</h2>
+                    <h2 class="modal-title" id="myModalLabel">  <i class="fa fa-pie-chart" aria-hidden="true"></i> Update Meat</h2>
                 </div>
                 <div class='col-xs-2 rm-padding'>
                     <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
@@ -565,7 +568,10 @@
                     </div>
                     <div class="form-group">
                         <label class="required">Type</label>
-                        <input type="text"  class="input-lg form-control" ng-model="updateForm.value" required>
+                        <select class="form-control"  ng-model="updateForm.value" required>
+                            <option value="veggie">Vegetables</option>
+                            <option value="meat">Meat</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label class="required">Price</label>

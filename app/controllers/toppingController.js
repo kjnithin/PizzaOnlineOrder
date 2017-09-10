@@ -77,14 +77,12 @@ var putTopping = function(req,res) {
             topping.name = req.body.name;
             topping.value = req.body.value;
             topping.price=req.body.price;
-            topping.store = req.body.store;
-
+          
             topping.save(function(err) {
             if(err){
               res.status(400).json({
                 success:false,
-                message: 'Invalid request',
-                error: errors
+                message: 'Invalid request'
               });
             }
             else{

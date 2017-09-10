@@ -14,12 +14,19 @@ app.controller("dashboardController", ['$scope', 'connectHttp', '$localStorage',
 
   connectHttp.getStoresByOwner($scope.userId)
     .then(function(response) {
-      var storeDetails = [];
-      for (var i = 0; i < response.data.length; i++) {
-        storeDetails.push(response.data[i]);
+      if(response.data.length<=0){
+        $scope.store = true;
       }
-      $scope.storeData = storeDetails;
-
+      else if(response.data.success === false && response.data.message == "Store not found"){
+          $scope.store = true;
+      }
+      else{
+        var storeDetails = [];
+        for (var i = 0; i < response.data.length; i++) {
+          storeDetails.push(response.data[i]);
+        }
+        $scope.storeData = storeDetails;
+      }
     }, function(response) {
       toastr.error('Something went wrong');
     })

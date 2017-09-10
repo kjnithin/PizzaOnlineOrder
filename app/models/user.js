@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.set('debug', true);
 var Schema = mongoose.Schema;
 
 var UserSchema= new Schema({
@@ -58,7 +57,6 @@ var UserSchema= new Schema({
         required:true
     }
 });
-
 
 
 module.exports = mongoose.model('User', UserSchema);

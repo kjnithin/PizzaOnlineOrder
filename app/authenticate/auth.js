@@ -53,7 +53,7 @@ var login = function(req,res,next){
       }
 
       if(!user){
-        return res.status(401).send({
+        res.status(400).json({
           message:'Error'
         });
       }

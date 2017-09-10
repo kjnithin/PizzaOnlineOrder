@@ -17,9 +17,12 @@ router.get('/logout',auth.logout);
 router.post('/auth', auth.authUser);
 
 router.get('/users' , userController.getUser);
-router.post('/users', userController.postUser);
+router.post('/register', userController.validatingUsers,
+                        userController.registerUser,
+                        auth.login);
 router.get('/users/:user_id', userController.getidUser);
-router.put('/users/:user_id', userController.putUser);
+router.put('/users/:user_id',  userController.validatingUsers,
+                               userController.putUser);
 router.delete('/users/:user_id', userController.deleteUser);
 
 router.get('/provinces', provinceController.getProvince);

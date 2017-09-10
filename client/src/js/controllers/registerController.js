@@ -1,12 +1,19 @@
-app.controller('registerController', ['$scope', '$location', 'toastr', 'connectHttp', '$state', function($scope, $location, toastr, connectHttp,$state) {
+app.controller('registerController', ['$scope', '$location', 'toastr', 'connectHttp', '$state','$localStorage', function($scope, $location, toastr, connectHttp,$state,$localStorage) {
     $scope.registerForm = {};
 
     $scope.register = function() {
         connectHttp.registerHttp($scope.registerForm)
         .then(function(response) {
-                console.log(response);
-                $location.path('/Login');
-                toastr.success('Successfully Registered!!');
+                $localStorage.userdata = response.data.user;
+                $localStorage.userId = response.data.user._id;
+                if (response.data.user.role === "owner") {
+                    $state.go('dashboard.admin',{userId : response.data.user._id});
+                } else if (response.data.user.role === "user") {
+                    $state.go('dashboard.user',{userId : response.data.user._id});
+                } else {
+                    $state.go('');
+                }
+                toastr.success('Successfully Logged In!!');
             }, function(response) {
                 toastr.error('Invalid Credentials');
             });

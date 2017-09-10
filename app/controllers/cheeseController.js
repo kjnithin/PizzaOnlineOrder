@@ -1,16 +1,13 @@
 var Cheese = require('../models/cheese');
 
 var getCheese = function(req,res) {
-
-
-      Cheese.find(function(err, cheeses) {
-        if(err)
+  Cheese.find(function(err, cheeses) {
+        if(err){
           res.send(err);
-
+        }
         res.json(cheeses);
       });
     };
-
 
 var postCheese = function(req,res) {
           var cheese = new Cheese(req.body);
@@ -33,12 +30,14 @@ var postCheese = function(req,res) {
 
 var getidCheese= function(req,res) {
   Cheese.findById(req.params.cheese_id, function(err, cheese) {
-         if(err)
+         if(err){
            res.send(err);
-
+         }
          res.json(cheese);
        });
-};
+     };
+
+
 
 var getCheeseByStore = function(req,res){
 
@@ -56,6 +55,7 @@ var getCheeseByStore = function(req,res){
     }
   })
 }
+
 var putCheese = function(req,res) {
 Cheese.findById(req.params.cheese_id, function(err, cheese) {
           if(err)

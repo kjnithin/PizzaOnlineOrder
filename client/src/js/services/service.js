@@ -1,6 +1,6 @@
 app.service('connectHttp', ['$http', function ($http) {
-    var baseUrl = 'http://ec2-34-233-152-20.compute-1.amazonaws.com:4000';
-    // var baseUrl = 'http://localhost:4000';
+    //   baseUrl = 'http://ec2-34-233-152-20.compute-1.amazonaws.com:4000';
+    var baseUrl = 'http://localhost:4000';
 
     this.logoutHttp = function () {
         return $http.get(baseUrl + '/logout');
@@ -15,7 +15,7 @@ app.service('connectHttp', ['$http', function ($http) {
     };
 
     this.registerHttp = function (val) {
-        return $http.post(baseUrl + '/users', val);
+        return $http.post(baseUrl + '/register', val);
     };
 
     this.getAllUser = function () {

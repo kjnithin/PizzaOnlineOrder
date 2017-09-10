@@ -8,26 +8,28 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
   $scope.storeId = $stateParams.storeId;
   $scope.userId = $localStorage.userId;
   $scope.name = $localStorage.name;
-
-  connectHttp.getAllUser()
-    .then(function(response) {
-      var userDetails = [];
-      var personalDetails = [];
-      for (var i = 0; i < response.data.length; i++) {
-        if (response.data[i].role === "user") {
-          userDetails.push(response.data[i]);
-        } else if (response.data[i].role === "admin") {
-          personalDetails.push(response.data[i]);
-        }
-      }
-      $scope.userValue = userDetails;
-      $scope.personal = personalDetails;
-      if (userDetails.length <= 0) {
-        $scope.showAlert = true;
-      }
-    });
-
   $scope.adminDetails = $localStorage.userdata;
+
+  // connectHttp.getAllUser()
+  //   .then(function(response) {
+  //     var userDetails = [];
+  //     var personalDetails = [];
+  //     for (var i = 0; i < response.data.length; i++) {
+  //       if (response.data[i].role === "user") {
+  //         userDetails.push(response.data[i]);
+  //       } else if (response.data[i].role === "admin") {
+  //         personalDetails.push(response.data[i]);
+  //       }
+  //     }
+  //     $scope.userValue = userDetails;
+  //     $scope.personal = personalDetails;
+  //     if (userDetails.length <= 0) {
+  //       $scope.showAlert = true;
+  //     }
+    // });
+
+    
+
 
   $scope.delete = {
     showTooltip: true,
@@ -417,6 +419,7 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
 
   connectHttp.getOrders($stateParams.storeId)
     .then(function(response){
+      console.log(response);
       if(response.data.length <= 0){
         $scope.alertMessage = true;
       }else if(response.data.length > 0){

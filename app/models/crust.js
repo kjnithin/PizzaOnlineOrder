@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.set('debug', true);
 var Schema = mongoose.Schema;
 
 var CrustSchema= new Schema({
