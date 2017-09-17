@@ -78,31 +78,31 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         })
 
         .state('items',{
-            url:'/:storeName/:storeId',
+            url:'/Store',
             abstrat:true,
             templateUrl:'views/createItem.html'
         })
 
         .state('items.crust',{
-          url:'/Crust',
+          url:'/:storeName/:storeId/Crust',
           controller:'createItemController',
           templateUrl:'views/itemViews/crustForm.html'
         })
 
         .state('items.size',{
-          url:'/Size',
+          url:'/:storeName/:storeId/Size',
           controller:'createItemController',
           templateUrl:'views/itemViews/sizeForm.html'
         })
 
         .state('items.cheese',{
-          url:'/Cheese',
+          url:'/:storeName/:storeId/Cheese',
           controller:'createItemController',
           templateUrl:'views/itemViews/cheeseForm.html'
         })
 
         .state('items.topping',{
-          url:'/Topping',
+          url:'/:storeName/:storeId/Topping',
           controller:'createItemController',
           templateUrl:'views/itemViews/toppingForm.html'
         })

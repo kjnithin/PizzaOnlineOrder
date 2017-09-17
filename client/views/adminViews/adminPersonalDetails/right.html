@@ -4,7 +4,7 @@
       <div class="col-md-offset-2 col-sm-offset-2 editButton">
           <span class="fa-stack fa-5x fa menu-blob">
              <i class="fa fa-circle fa-stack-2x blue-bb"></i>
-             <i class="fa fa fa-edit fa-stack-1x icon"  data-toggle="modal" data-target="#editAdminDetails" id="editAdminModal"></i>
+             <i class="fa fa fa-edit fa-stack-1x icon"  data-toggle="modal" data-target="#editAdminDetails" id="editAdminModal" ng-click='editDetails(adminDetails)'></i>
           </span>
           <div clss="col-md-offset-1 col-sm-offset-1 iconText">
               <h3 id="editUserBtn">Edit</h3>
@@ -13,7 +13,7 @@
       <div class="col-md-offset-2 col-sm-offset-2 deleteButton ">
           <span class="fa-stack fa-5x fa menu-blob">
             <i class="fa fa-circle fa-stack-2x blue-bb"></i>
-            <i class="fa fa fa-trash-o fa-stack-1x icon"   data-toggle="modal" data-target="#adminPersonalDel" id="adminDelModal"></i>
+            <i class="fa fa fa-trash-o fa-stack-1x icon"   data-toggle="modal" data-target="#adminPersonalDel" id="adminDelModal" ng-click='adminDelete(adminDetails)'></i>
           </span>
           <div clss="col-md-offset-1 col-sm-offset-1 ">
               <h3  id="deleteUserBtn">Delete</h3>
@@ -37,12 +37,12 @@
             </div>
             <div class="modal-body">
                 <div class='col-md-12 text-center'>
-                    <p>Do you want to delete the user account for {{name}}?</p>
+                    <p>Do you want to delete the user account for {{adminName.name}}?</p>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
-                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteAdmin(person, person._id ,userValue)">DELETE</button>
+                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteAdmin(adminName._id)">DELETE</button>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                     <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
                 </div>
             </div>
-            <form ng-submit="editUser(details._id)">
+            <form ng-submit="editAdmin(details._id)">
                 <div class="modal-body">
                     <div class="form-group">
                         <label  class="required">Name</label>

@@ -3,7 +3,7 @@
 
   <div class="form-group">
       <label class="col-md-4 col-sm-4 col-xs-4 labelPersonalDetails ">Name:</label>
-      <div class="col-md-8 col-sm-8 col-xs-8 showPersonalDetails">{{userDetails.name | firstCapital}}
+      <div class="col-md-8 col-sm-8 col-xs-8 showPersonalDetails">{{userDetails.name | uppercase}}
       </div>
   </div>
   <div class="form-group">
@@ -33,3 +33,6 @@
   </div>
   </div>
 </div>
+
+<!-- Loader -->
+<div class="loader text-center" ng-hide='userloading'></div>

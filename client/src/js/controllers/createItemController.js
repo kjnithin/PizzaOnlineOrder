@@ -25,7 +25,10 @@ app.controller("createItemController", ['$scope', 'connectHttp', '$localStorage'
     connectHttp.postCrust($scope.crust)
       .then(function(response) {
         if (response.status == 200) {
-          $state.go('items.size')
+          $state.go('items.size',{
+            storeName: $scope.storeName,
+            storeId : $scope.storeId
+          })
         }
       }, function(response) {
         toastr.error('Something went wrong!!!');
@@ -48,7 +51,10 @@ app.controller("createItemController", ['$scope', 'connectHttp', '$localStorage'
     connectHttp.postSize($scope.size)
       .then(function(response) {
         if (response.status == 200) {
-          $state.go('items.cheese')
+          $state.go('items.cheese',{
+            storeName: $scope.storeName,
+            storeId : $scope.storeId
+          })
         }
       }, function(response) {
         toastr.error('Something went wrong!!');
@@ -70,7 +76,10 @@ app.controller("createItemController", ['$scope', 'connectHttp', '$localStorage'
     connectHttp.postCheese($scope.cheese)
       .then(function(response) {
         if (response.status == 200) {
-          $state.go('items.topping')
+          $state.go('items.topping',{
+            storeName: $scope.storeName,
+            storeId : $scope.storeId
+          })
         }
       }, function(response) {
         toastr.error('Sommething went wrong!!!');

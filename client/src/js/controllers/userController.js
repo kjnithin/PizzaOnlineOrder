@@ -46,21 +46,27 @@ app.controller("userController", ['$scope', '$localStorage', 'connectHttp','$sta
 
     init();
 
-    angular.element('#myModalShower').trigger('click');
+    $scope.userloading = true;
 
     $scope.deleteAccount = function(id){
+      $scope.userloading = false;
         connectHttp.deleteUser(id)
             .then(function(response){
                 if(response.status === 200){
-                    $window.localStorage.clear();
-                    $state.transitionTo('login', $stateParams, {
+                  angular.element('#myModalShower').modal('hide');
+                  angular.element('body').removeClass('modal-open');
+                  angular.element('.modal-backdrop').remove();
+
+                  $scope.userloading = true;
+
+                  $window.localStorage.clear();
+                    setTimeout(function(){
+                      $state.transitionTo('login', $stateParams, {
                         reload: true,
                         inherit: false,
                         notify: true
-                    });
-                    angular.element('#myModalShower').modal('hide');
-                    angular.element('body').removeClass('modal-open');
-                    angular.element('.modal-backdrop').remove();
+                      });
+                    },1000);
                     toastr.success('Account has been deleted successfully!!!');
                 }
                 else {
@@ -215,23 +221,10 @@ app.controller("userController", ['$scope', '$localStorage', 'connectHttp','$sta
              $state.go('user.history',({storeName :$stateParams.storeName, storeId : $stateParams.storeId , userId : $scope.userId }));
             },4000);
 
-            connectHttp.getMyorders($scope.storeId,$scope.userId)
-              .then(function(response){
-                if(response.data.length <= 0){
-                  $scope.showMessage = true;
-                }else if(response.data.length > 0){
-                  $scope.orderData = response.data;
-                }else{
-                  $scope.showMessage = true;
-                }
-              },function(response){
-                 toastr.error('Something is wrong !!!!');
-              })
-        }
-        else {
-            $scope.loading= true;
+            myOrder();
+          }else{
             toastr.error('Something is Wrong!!!');
-        }
+          }
       },function(response){
         $scope.loading= true;
         angular.element('#orderBill').modal('hide');
@@ -244,18 +237,22 @@ app.controller("userController", ['$scope', '$localStorage', 'connectHttp','$sta
     };
 
 
-    connectHttp.getMyorders($scope.storeId,$scope.userId)
+    $scope.showMessage = true;
+   function myOrder(){
+      connectHttp.getMyorders($scope.storeId,$scope.userId)
       .then(function(response){
         if(response.data.length <= 0){
           $scope.showMessage = true;
         }else if(response.data.length > 0){
+          $scope.showMessage = false;
           $scope.orderData = response.data;
-        }else{
-          $scope.showMessage = true;
         }
       },function(response){
-         toastr.error('Something is wrong !!!!');
+        toastr.error('Something is wrong !!!!');
       })
+    }
+
+  myOrder();
 
 
 }]);

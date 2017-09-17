@@ -6,13 +6,13 @@
     <md-card-header>
       <md-card-title>
         <md-card-header-title>
-           <span class = "md-headline bolder"> {{order.size.name}} Pizza</span>
+           <span class = "md-headline bolder"> {{order.size.name | firstCapital}} Pizza</span>
       </md-card-header-title>
       </md-card-title>
 
       <md-card-title>
             <md-card-title-text>
-               <div class = "md-subhead bold text-right">Ordered : {{order.created | date : 'medium'}} </div>
+               <div class = "md-subhead bold text-right">Ordered : {{order.created | date : 'short'}} </div>
             </md-card-title-text>
          </md-card-title>
     </md-card-header>

@@ -77,7 +77,7 @@ var putTopping = function(req,res) {
             topping.name = req.body.name;
             topping.value = req.body.value;
             topping.price=req.body.price;
-          
+
             topping.save(function(err) {
             if(err){
               res.status(400).json({
@@ -95,6 +95,39 @@ var putTopping = function(req,res) {
         });
 };
 
+var checkTopping = function(req, res, next) {
+
+  Topping.find({
+      store: req.params.store_id
+    })
+    .then(function(topping) {
+      if (topping.length <= 0) {
+        res.status(200).json({
+          success: true,
+          message: "store,cheese,crust & size deleted"
+        })
+      } else {
+        next();
+      }
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    })
+}
+
+var deleteToppingByStore = function(req,res){
+
+  Topping.remove({store : req.params.store_id},function(err , topping){
+    if(err){
+      res.status(400).json(err);
+    }else{
+      res.status(200).json({
+        success : true,
+        message : "Toppings related to store is deleted"
+      })
+    }
+  })
+}
 
 var deleteTopping = function(req,res) {
     Topping.remove({
@@ -117,5 +150,7 @@ module.exports = {
   getTopping : getTopping,
   postTopping : postTopping,
   getidTopping : getidTopping,
-  getToppingsByStore : getToppingsByStore
+  getToppingsByStore : getToppingsByStore,
+  checkTopping : checkTopping,
+  deleteToppingByStore : deleteToppingByStore
 };

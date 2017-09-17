@@ -62,27 +62,54 @@ var getStoreByOwner = function(req,res){
          })
 };
 
+var checkStores = function(req,res,next){
 
-var deleteStore = function(req,res){
+  Store.find({owner:req.params.user_id})
+  .then(function(stores){
+    if(stores.length <= 0){
+      res.status(200).json({
+        success : true,
+        message : "Admin deleted"
+      })
+    }else{
+      next();
+    }
+  })
+  .catch(function(err){
+    res.status(400).json(err);
+  })
+}
+
+var deleteStore = function(req,res,next){
 
     Store.remove({
-        _id: req.params.store_id
+        owner: req.params.user_id
     }, function(err,store){
         if(err){
             res.status(400).json(err);
-        }else{
-            res.status(200).json({
-                success:true,
-                message : 'Store deleted'
-            });
+        }else {
+          next();
         }
     });
 }
+
+var deleteStoreById = function(req,res,next){
+
+  Store.remove({_id : req.params.store_id},function(err,store){
+    if(err){
+      res.status(400).json(err);
+    }else{
+      next();
+    }
+  })
+};
 
 module.exports={
     getStores : getStores,
     createStore : createStore,
     getStoreByName : getStoreByName,
     deleteStore : deleteStore,
-    getStoreByOwner : getStoreByOwner
+    getStoreByOwner : getStoreByOwner,
+    deleteStoreById : deleteStoreById,
+    checkStores : checkStores
 }

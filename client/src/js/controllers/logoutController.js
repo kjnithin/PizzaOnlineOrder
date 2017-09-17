@@ -4,7 +4,6 @@ app.controller('logoutController', ['$scope', '$location', 'toastr', 'connectHtt
         connectHttp.logoutHttp()
             .then(function (response) {
                 $window.localStorage.clear();
-                // $location.path('/Login');
                 $state.transitionTo('login', $stateParams, {
                     reload: true,
                     inherit: false,

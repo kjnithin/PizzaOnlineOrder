@@ -81,25 +81,56 @@ var putUser = function(req, res) {
     });
 };
 
+var findUser = function(req,res,next){
 
-var deleteUser = function(req, res) {
-  User.remove({
+  User.findOne({_id : req.params.user_id},function(err,user){
+     if(err){
+       res.status(400).json(err);
+     }else{
+       if(user.role === 'owner'){
+         deleteAdmin(req,res,next)
+       }else if(user.role === 'user'){
+         deleteUser(req,res,next)
+       }
+     }
+  });
+}
+
+var deleteAdmin = function(req, res, next) {
+
+  User.deleteOne({
     _id: req.params.user_id
   }, function(err, user) {
     if (err) {
-      res.send(err);
+      res.status(400).send(err);
     }
-    res.json({
-      message: 'user Deleted'
-    });
+    else{
+      next();
+    }
   });
 };
 
 
+var deleteUser = function(req, res, next){
+
+  User.deleteOne({
+    _id: req.params.user_id
+  }, function(err, user) {
+    if (err) {
+      res.status(400).send(err);
+    }
+    else{
+      next();
+    }
+  });
+}
+
 
 module.exports = {
   validatingUsers: validatingUsers,
-  deleteUser: deleteUser,
+  findUser : findUser,
+  deleteAdmin: deleteAdmin,
+  deleteUser : deleteUser,
   putUser: putUser,
   getidUser: getidUser,
   getUser: getUser,

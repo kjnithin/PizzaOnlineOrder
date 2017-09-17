@@ -22,7 +22,7 @@ app.controller("storeController", ['$scope', 'connectHttp', '$localStorage','toa
     connectHttp.createStore($scope.store)
     .then(function(response){
         toastr.success('Successfully Created Store!!');
-        $state.go('items',{storeName : response.data.name, storeId : response.data._id});
+        $state.go('items.crust',{storeName : response.data.name, storeId : response.data._id});
     },function(response){
         toastr.error('Invalid Data');
     })

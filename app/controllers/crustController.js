@@ -82,17 +82,49 @@ Crust.findById(req.params.crust_id, function(err, crust) {
         });
 };
 
+var checkCrust = function(req, res, next) {
+ console.log(req.params);
+  Crust.find({
+      store: req.params.store_id
+    })
+    .then(function(crust) {
+      if (crust.length <= 0) {
+        res.status(200).json({
+          success: true,
+          message: "store & cheese deleted"
+        })
+      } else {
+        next();
+      }
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    })
+}
+
+var deleteCrustByStore = function(req,res,next){
+
+  Crust.remove({store : req.params.store_id},function(err , crust){
+    if(err){
+      res.status(400).json(err);
+    }else{
+      next();
+    }
+  })
+};
 
 var deleteCrust = function(req,res) {
   Crust.remove({
          _id: req.params.crust_id
        }, function(err, crust) {
-         if(err)
+         if(err){
            res.send(err);
-
+         }
          res.json({message: 'crust Deleted'});
        });
-};
+     };
+
+
 
 module.exports = {
   deleteCrust : deleteCrust,
@@ -100,5 +132,7 @@ module.exports = {
   getidCrust : getidCrust,
   getCrust : getCrust,
   postCrust : postCrust,
-  getCrustByStore : getCrustByStore
+  getCrustByStore : getCrustByStore,
+  checkCrust : checkCrust,
+  deleteCrustByStore : deleteCrustByStore
 };

@@ -7,6 +7,10 @@ app.controller("dashboardController", ['$scope', 'connectHttp', '$localStorage',
    toastr.info('Please Login');
  }
 
+ if($localStorage.userdata.role === 'owner'){
+   $scope.hideCreateStore = true;
+ }
+
   $scope.goToCreateStore = function() {
     $state.go('store');
   }
@@ -75,6 +79,26 @@ app.controller("dashboardController", ['$scope', 'connectHttp', '$localStorage',
    })
  }
 
+ angular.element('#deleteStoreModal').trigger('click');
+ $scope.deleteStoreItem = function(store) {
+   $scope.item = store;
+ }
+
+ $scope.deleteStore = function(item, val, store) {
+   connectHttp.deleteStore(val)
+     .then(function(response) {
+       if (response.status === 200) {
+         angular.element('#deleteStore').modal('hide');
+         angular.element('body').removeClass('modal-open');
+         angular.element('.modal-backdrop').remove();
+         var index = store.indexOf(item);
+         store.splice(index, 1);
+         toastr.success('deleted successfully!!!');
+       } else {
+         toastr.error('Something is Wrong!!!');
+       }
+     });
+ };
 
 
 }]);

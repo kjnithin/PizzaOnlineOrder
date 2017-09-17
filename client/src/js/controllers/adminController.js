@@ -1,4 +1,4 @@
-app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localStorage', '$stateParams','$state', function($scope, connectHttp, toastr, $localStorage, $stateParams,$state) {
+app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localStorage', '$stateParams','$state','$window',function($scope, connectHttp, toastr, $localStorage, $stateParams,$state,$window) {
 
   if(!$localStorage.userId){
     $state.go('login');
@@ -9,26 +9,6 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
   $scope.userId = $localStorage.userId;
   $scope.name = $localStorage.name;
   $scope.adminDetails = $localStorage.userdata;
-
-  // connectHttp.getAllUser()
-  //   .then(function(response) {
-  //     var userDetails = [];
-  //     var personalDetails = [];
-  //     for (var i = 0; i < response.data.length; i++) {
-  //       if (response.data[i].role === "user") {
-  //         userDetails.push(response.data[i]);
-  //       } else if (response.data[i].role === "admin") {
-  //         personalDetails.push(response.data[i]);
-  //       }
-  //     }
-  //     $scope.userValue = userDetails;
-  //     $scope.personal = personalDetails;
-  //     if (userDetails.length <= 0) {
-  //       $scope.showAlert = true;
-  //     }
-    // });
-
-    
 
 
   $scope.delete = {
@@ -419,7 +399,6 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
 
   connectHttp.getOrders($stateParams.storeId)
     .then(function(response){
-      console.log(response);
       if(response.data.length <= 0){
         $scope.alertMessage = true;
       }else if(response.data.length > 0){
@@ -430,6 +409,61 @@ app.controller("adminController", ['$scope', 'connectHttp', 'toastr', '$localSto
     },function(response){
       toastr.error('Something went wrong');
     })
+
+
+    $scope.editDetails = function(user){
+      $scope.details = user;
+    }
+
+   $scope.adminObject = {};
+   $scope.editAdmin = function(id){
+     $scope.adminObject = {
+       "name" : $scope.details.name,
+       "userName" : $scope.details.userName,
+       "email" : $scope.details.email,
+       "apt" : $scope.details.apt,
+       "street" : $scope.details.street,
+       "city" : $scope.details.city,
+       "province" : $scope.details.province,
+       "postal" : $scope.details.postal,
+       "phone" : $scope.details.phone
+     }
+     connectHttp.putUser($localStorage.userId , $scope.adminObject)
+     .then(function(response){
+       if(response.status === 200){
+         angular.element('#editAdminDetails').modal('hide');
+         angular.element('body').removeClass('modal-open');
+         angular.element('.modal-backdrop').remove();
+         toastr.success('updated successfully!!!');
+       }else{
+         toastr.warning('something went wrong');
+        }
+     },function(response){
+       toastr.error("Error !!! ");
+     })
+   }
+
+   $scope.adminDelete = function(details){
+     $scope.adminName = details;
+   }
+
+  $scope.deleteAdmin = function(id){
+    connectHttp.deleteAdmin(id,$stateParams.storeId)
+    .then(function(response){
+      if(response.status === 200){
+        angular.element('#adminPersonalDel').modal('hide');
+        angular.element('body').removeClass('modal-open');
+        angular.element('.modal-backdrop').remove();
+        toastr.success('updated successfully!!!');
+        $window.localStorage.clear();
+        $state.go('login');
+      }else{
+        toastr.warning('something went wrong');
+       }
+    },function(response){
+      toastr.error('Error !!!!');
+    })
+  }
 
 
 }]);

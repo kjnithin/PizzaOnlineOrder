@@ -23,7 +23,11 @@ app.service('connectHttp', ['$http', function ($http) {
     };
 
     this.deleteUser = function (val) {
-        return $http.delete(baseUrl + '/users/' + val);
+        return $http.delete(baseUrl + '/user/' + val);
+    };
+
+    this.deleteAdmin = function (id , store) {
+        return $http.delete(baseUrl + '/users/'+id+'/'+store);
     };
 
     this.googleAuth = function (val) {
@@ -125,4 +129,9 @@ app.service('connectHttp', ['$http', function ($http) {
     this.getOrders = function(store){
       return $http.get(baseUrl+'/getOrderByStore/'+store);
     }
+
+    this.deleteStore = function(val){
+      return $http.delete(baseUrl+'/store/'+val);
+    }
+
 }]);

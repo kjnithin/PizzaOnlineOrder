@@ -84,6 +84,36 @@ var putSize = function(req,res) {
         });
 };
 
+var checkSize = function(req, res, next) {
+
+  Size.find({
+      store: req.params.store_id
+    })
+    .then(function(size) {
+      if (size.length <= 0) {
+        res.status(200).json({
+          success: true,
+          message: "store,crust & cheese deleted"
+        })
+      } else {
+        next();
+      }
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    })
+};
+
+var deleteSizeByStore = function(req,res,next){
+
+  Size.remove({store : req.params.store_id},function(err , size){
+    if(err){
+      res.status(400).json(err);
+    }else{
+      next();
+    }
+  })
+};
 
 var deleteSize = function(req,res) {
   Size.remove({
@@ -102,5 +132,7 @@ module.exports = {
   getidSize : getidSize,
   postSize : postSize,
   putSize :putSize,
-  getSizeByStore : getSizeByStore
+  getSizeByStore : getSizeByStore,
+  checkSize : checkSize,
+  deleteSizeByStore : deleteSizeByStore
 };

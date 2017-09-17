@@ -21,9 +21,23 @@ router.post('/register', userController.validatingUsers,
                         userController.registerUser,
                         auth.login);
 router.get('/users/:user_id', userController.getidUser);
-router.put('/users/:user_id',  userController.validatingUsers,
-                               userController.putUser);
-router.delete('/users/:user_id', userController.deleteUser);
+router.put('/users/:user_id', userController.putUser);
+router.delete('/users/:user_id/:store_id', userController.findUser,
+                                 userController.deleteAdmin,
+                                 storeController.checkStores,
+                                 storeController.deleteStore,
+                                 crustController.checkCrust,
+                                 crustController.deleteCrustByStore,
+                                 sizeController.checkSize,
+                                 sizeController.deleteSizeByStore,
+                                 cheeseController.checkCheese,
+                                 cheeseController.deleteCheeseByStore,
+                                 toppingController.checkTopping,
+                                 toppingController.deleteToppingByStore);
+router.delete('/user/:user_id', userController.findUser,
+                                 userController.deleteUser,
+                                 orderController.checkUser,
+                                 orderController.deleteOrder);
 
 router.get('/provinces', provinceController.getProvince);
 router.post('/provinces', provinceController.postProvince);
@@ -63,7 +77,16 @@ router.get('/stores', storeController.getStores);
 router.post('/createstore', storeController.createStore);
 router.get('/store/:name', storeController.getStoreByName);
 router.get('/getstore/:owner', storeController.getStoreByOwner);
-router.delete('/deleteStore/:store_id', storeController.deleteStore);
+router.delete('/deleteStore/:user_id', storeController.deleteStore);
+router.delete('/store/:store_id', storeController.deleteStoreById,
+                                  crustController.checkCrust,
+                                  crustController.deleteCrustByStore,
+                                  sizeController.checkSize,
+                                  sizeController.deleteSizeByStore,
+                                  cheeseController.checkCheese,
+                                  cheeseController.deleteCheeseByStore,
+                                  toppingController.checkTopping,
+                                  toppingController.deleteToppingByStore);
 
 router.post('/createOrder', orderController.createOrder);
 router.get('/orders', orderController.getOrders);
@@ -71,7 +94,8 @@ router.get('/order/:order_id', orderController.getOrderById);
 router.get('/getOrder/:user', orderController.getOrderByUser);
 router.get('/getOrderByStore/:store', orderController.getOrderByStore);
 router.get('/getOrderByStoreUser/:storeId/:userId', orderController.getOrderByStoreUser);
-router.delete('/order/:order_id', orderController.deleteOrder);
+router.delete('/order/:user_id', orderController.deleteOrder);
+
 
 
 module.exports = router;

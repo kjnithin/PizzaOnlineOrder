@@ -82,10 +82,27 @@ var getOrderByStoreUser = function(req,res){
         })
 };
 
+var checkUser = function(req,res,next){
+
+   Order.find({user : req.params.user_id})
+   .then(function(order){
+     if(order.length<=0){
+       res.status(200).json({
+         success : true,
+         message : 'user deleted'
+       })
+     }else {
+       next();
+     }
+   })
+   .catch(function(err){
+     res.status(400).json(err);
+   })
+}
 
 var deleteOrder = function(req,res){
 
-  Order.remove({_id:req.params.order_id})
+  Order.remove({user : req.params.user_id})
        .then(function(){
          res.status(200).json({
            success : true,
@@ -105,5 +122,6 @@ module.exports = {
   deleteOrder : deleteOrder,
   getOrderByUser : getOrderByUser,
   getOrderByStore : getOrderByStore,
-  getOrderByStoreUser : getOrderByStoreUser
+  getOrderByStoreUser : getOrderByStoreUser,
+  checkUser : checkUser
 };

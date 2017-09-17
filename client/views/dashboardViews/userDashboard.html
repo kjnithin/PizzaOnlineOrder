@@ -3,11 +3,11 @@
   <md-card ng-repeat="store in storeDetails">
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline"><strong>{{store.name}}</strong></span>
+                        <span class="md-headline"><strong><h3>{{store.name}}</h3></strong></span>
                         <span class="md-subhead"><strong>{{store.description}}</strong></span>
                     </md-card-title-text>
                     <md-card-title-media>
-                        <div class="md-media-sm card-media"></div>
+                        <div class="md-media-lg card-media"> <img ng-src = {{store.image}} class = "md-card-image" alt = "Store Image"></div>
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
