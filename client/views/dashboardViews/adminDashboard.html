@@ -1,34 +1,28 @@
 <div class='col-md-12 '>
 
   <div class="alert alert-danger" ng-if='store'><strong><h3> <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i> There is no store available .. Please create one!!</h3></strong> </div>
-
-  <md-card ng-repeat="store in storeData | orderBy : 'name'" class='col-md-5'>
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline"><strong><h3>{{store.name | firstCapital}}</h3></strong></span>
-                        <span class="md-subhead"><strong><h4>{{store.description}}</h4></strong></span>
-                    </md-card-title-text>
-                    <md-card-title-media>
-                      <div class="md-media-lg card-media"> <img ng-src = {{store.image}} class = "md-card-image" alt = "Store Image"></div>
-                    </md-card-title-media>
-                </md-card-title>
-                <md-card-content>
-                  <div><b>Address:</b></div>
-                  <h4>{{store.address}}</h4>
-                </md-card-content>
-                <md-card-actions  >
-                  <div layout-align="start center">
-                  <button type="button" class='btn btn-primary pull-right' aria-hidden="true" data-toggle="modal" data-target="#deleteStore" id="deleteStoreModal" ng-click="deleteStoreItem(store)"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Delete
-                    <md-tooltip md-direction="{{delete.tipDirection}}">Delete Store</md-tooltip></button>
-                </div>
-                <div  layout-align="end center">
-                    <button type="button" class="btn btn-primary" ng-click="goToItems(store._id,store.name)"><i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> Store
-                        <md-tooltip md-direction="{{delete.tipDirection}}">Go To Store</md-tooltip>
-                    </button>
-                  </div>
-                </md-card-actions>
-    </md-card>
+  <div class='storeCard-group'>
+  <div class="storeCard col-md-3" ng-repeat="store in storeData | orderBy : 'name'">
+    <img ng-src={{store.image}} alt="Store Image">
+    <div class="storeCard-content">
+      <h3>{{store.name}}</h3>
+      <h5>{{store.description}}</h5>
+      <div class='storeCard-address'>
+        <div class='address-heading'>Address</div>
+        {{store.address}}
+      </div>
+      <div class='storeCard-button'>
+        <button type="button" class='btn btn-primary pull-right' aria-hidden="true" data-toggle="modal" data-target="#deleteStore" id="deleteStoreModal" ng-click="deleteStoreItem(store)"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Delete
+            <md-tooltip md-direction="{{delete.tipDirection}}">Delete Store</md-tooltip></button>
+        <button type="button" class="btn btn-primary" ng-click="goToItems(store._id,store.name)"><i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> Store
+                <md-tooltip md-direction="{{delete.tipDirection}}">Go To Store</md-tooltip>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
+
 
 <!--Delete store modal-->
 <div class="modal fade" id="deleteStore" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -40,18 +34,18 @@
                 </div>
                 <div class='col-xs-2 rm-padding'>
                     <button type="button" data-dismiss="modal" class="close" aria-label="Close"><i class="fa fa-times fa-fw fa-2x"></i></button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class='col-md-12 text-center'>
-                    <p>Do you want to delete {{item.name}} Store?</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
-                <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteStore(item, item._id ,storeData)">DELETE</button>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="modal-body">
+      <div class='col-md-12 text-center'>
+        <p>Do you want to delete {{item.name}} Store?</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-warning btn-lg pull-left" data-dismiss="modal">CANCEL</button>
+      <button type="button" class="btn btn-danger btn-lg pull-right" ng-click="deleteStore(item, item._id ,storeData)">DELETE</button>
+    </div>
+  </div>
+</div>
 </div>
 <!--End of modal-->

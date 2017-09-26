@@ -1,19 +1,23 @@
-<div class='col-md-11'>
+<div class='col-md-12'>
+  <div class='storeCard-group'>
+  <div class="storeCard col-md-3" ng-repeat="store in storeDetails">
+    <img ng-src={{store.image}} alt="Store Image">
 
-  <md-card ng-repeat="store in storeDetails">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline"><strong><h3>{{store.name}}</h3></strong></span>
-                        <span class="md-subhead"><strong>{{store.description}}</strong></span>
-                    </md-card-title-text>
-                    <md-card-title-media>
-                        <div class="md-media-lg card-media"> <img ng-src = {{store.image}} class = "md-card-image" alt = "Store Image"></div>
-                    </md-card-title-media>
-                </md-card-title>
-                <md-card-actions layout="row" layout-align="end center">
-                    <button type="button" class="btn btn-primary" ng-click="gotoStore(store.name, store._id)"><i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> Store
-                        <md-tooltip md-direction="{{delete.tipDirection}}">Go To Store</md-tooltip>
-                    </button>
-                </md-card-actions>
-    </md-card>
+    <div class="storeCard-content">
+      <h3>{{store.name}}</h3>
+      <h5>{{store.description}}</h5>
+
+      <div class='storeCard-address'>
+        <div class='address-heading'>Address</div>
+        {{store.address}}
+      </div>
+
+      <div class='storeCard-button'>
+        <button type="button" class="btn btn-primary" ng-click="gotoStore(store.name, store._id)"><i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> Store
+             <md-tooltip md-direction="{{delete.tipDirection}}">Go To Store</md-tooltip>
+         </button>
+      </div>
     </div>
+  </div>
+</div>
+</div>
